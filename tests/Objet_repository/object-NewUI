@@ -50,3 +50,9 @@ typecontent = page.getByRole('combobox');
 
 //Content in add audio
 contentaddaudio = page.getByText('00:01:0421.01.26 10.01 - 12.');
+
+//Exit Overlay Add Audio button
+page.locator('.song-header > svg');
+
+//Link Mode button
+page.locator('.info_box.box2 > .info_box_container > .link-mode');

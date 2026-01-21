@@ -79,6 +79,7 @@ await expect(contentDrop).toBeEnabled();
 
 await contentaddaudio.dragTo(contentDrop);
 
+//Exit Overlay Add Audio
 const X= page.locator('.song-header > svg');
 await expect (X).toBeVisible();
 await expect(X).toBeEnabled();
