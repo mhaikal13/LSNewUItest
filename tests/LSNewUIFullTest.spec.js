@@ -78,9 +78,7 @@ await expect(OptionHour).toBeEnabled();
 await OptionHour.click();
 
 
-const content = page
-  .getByTestId('info-[object Object]')
-  .nth(2);
+const content = page.getByTestId('info-[object Object]').nth(2);
 
 await expect(content).toBeVisible();
 await expect(content).toBeEnabled();

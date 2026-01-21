@@ -1,0 +1,52 @@
+/////-----/-----Object Configuration LIVE STUDIO-----////////----///
+ //Launch Live Studio
+ page.getByRole('button', { name: 'OK' });
+
+ //Setting Button
+ page.locator('.settings-button').first();
+
+ //overlaysetting
+ overlaysetting = page.getByText
+ ('Audio Replace ModeTrueFalseDisable Keyboard ShortcutsBoost ModeEcho');
+
+ //Combobox AudioReplaceMode
+ AudioReplaceMode = page.getByRole('combobox').nth(3);
+
+ //Switch bbutton DisableKeyboardShortcuts
+ DisableKeyboardShortcuts = page.locator('.react-switch-bg').first();
+
+ //Save setting button
+ Save = page.getByRole('button', { name: 'Save Settings' });
+
+ /////-----/-----Object Playout LIVE STUDIO-----////////----///
+
+//Playlist date picker button
+PlaylistDatePicker = page.locator('.react-datepicker__input-container');
+
+//Overlay Playlist date picker
+scrollContainer = page.getByRole('dialog', { name: 'Choose Date and Time' });
+
+//Option date
+OptionDate =  page.getByRole('option', { name: 'Choose Monday, January 19th,' });
+
+//Option hour
+OptionHour = page.getByRole('option', { name: '07' });
+
+//Content in playlist 
+content = page.getByTestId('info-[object Object]').nth(2);
+
+//Dropable Player 1,2,3 ( if drop to the player 2,3. change the number)
+Player = page.getByText(/^Player 1/);
+
+//Add audio button
+addaudio = page.locator('.header-playlist > div:nth-child(3)');
+await expect(addaudio).toBeVisible();
+
+//overlay add audio 
+overlayaddaudio = page.getByText('Add Audio---all---');
+
+//Combobox Type Content add audio
+typecontent = page.getByRole('combobox');
+
+//Content in add audio
+contentaddaudio = page.getByText('00:01:0421.01.26 10.01 - 12.');
