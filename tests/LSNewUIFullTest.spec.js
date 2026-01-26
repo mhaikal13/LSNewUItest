@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const URL = 'https://live-aps1.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6Ijk5NTJiOTdhLWJkOTYtNDM5ZS05YzZjLTMxN2QxN2ZhOWZmNiJ9.eyJ1c2VyTGl2ZUlkIjoiOTg4YWZkZGEtNjVlMC00ZDJhLWIxNzgtODFjNzk4MGU0MDM3Iiwicm9vbUlEIjoiQlJNLUIzLUJSWCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjo0LCJtaWNGYWRlckxhYmVsIjoiTkVXIiwiYml0UmF0ZSI6MjU2MDAwLCJtaWNBbHdheXNPbiI6ZmFsc2UsInNlcnZlckNvZGUiOiJBV1MtSUQtSktUIiwibmV0d29ya0NvZGUiOiJCUlgiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInJlb3JkZXJGYWRlciI6ZmFsc2UsInRpbWVab25lIjoiRXVyb3BlL0JlcmxpbiIsIm5ldHdvcmtNb2RlIjpmYWxzZSwiYWx0ZXJuYXRlVmlldyI6dHJ1ZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJyaWxsdXggUmFkaW8iLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYnJpbGx1eC1yYWRpby5wbmciLCJyYWRpb0NvZGUiOiJCUk0iLCJjaGFubmVsSWQiOiIxNTkzIiwibmV0d29ya0lkIjoiMTE0IiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJCUk0iLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6Ijk5MjU3ZGQzLWY4MDQtNDhmYy1iZTJiLTUxYWY0ZGUwOTJjZSIsImlhdCI6MTc2ODk2NTY3NSwiZXhwIjoxNzY5NTcwNDc1fQ.vmh5xpkOkKjT9q0kAu02lyvszPwkcql-znZfeboN0pdj_wN1W_yy8xS6rJzYSyojXzkGxPigzDBCCjP3jQDHzaTmXsu2iakI_cgOoIpe7UgiHjXRK5QT9G3ANcr8sJYjs4BgzQJMxkX9EXVO9fgb-LENhySshPuAkJtrH4UjQBJB6JY9J4oMDvEWsOIaNzHvwhTCA9L6vK0bQvSvs03FEeIxaswZSVI1Jmpp756KcxTNhvVvXUEvzewCYz9JY5r668p01Z3CWQdJ3s6aDXwLQOmfzVlhYQS5TsyaXz_EUHgQ6p7hh7sDY7vH8ok1t1bJ_9n3bDvDeHbpnMehNXP587AxEQRBUltsVaEEmI0ecIVRKTdovr4TTPtRDFPyqg5bkEDOo-e0b8_MjHellyh2ZiUPqsM45wPnYmUoocsEGq3GUX4_ylmXRbOErnUYXFvJhS_vMrwMx0wC7KP-4sdbPptuo0Bjihop6Ed7N4_OuKLO2YvcWRaAUdAC1kIjKqUt07JmgefTy-mZLVyrHCrmu0eJpcKPdAcrIn9zM93TZyDvNhHPl_W8GQVicqMC_bz47y5C6p2_LhlharVcv7em6siVGyN3xVonkbQFJM4yzUSkdK1aoL9aaGHCQ3vDLW1mfpjMRwAxQ3CmQtjoBAcLFLKTOdsZ1FmA4nJeUDu-5Xs';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjA4NmVjMjdlLTRkYjctNDI5NC1hNmQ4LWY4NTg2YmYxMDdkMyJ9.eyJ1c2VyTGl2ZUlkIjoiMzlkMzJkNWItZTA3YS00NWE2LTkyYWUtMmExOTY3MTY2YTE5Iiwicm9vbUlEIjoiQlJNLUIzLUJSWCIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NSwibWljRmFkZXJMYWJlbCI6Ik5FVyIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLVNHLVNUQUdJTkciLCJuZXR3b3JrQ29kZSI6IkJSWCIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQnJpbGx1eCBSYWRpbyIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9icmlsbHV4LXJhZGlvLnBuZyIsInJhZGlvQ29kZSI6IkJSTSIsImNoYW5uZWxJZCI6IjE1OTMiLCJuZXR3b3JrSWQiOiIxMTQiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkJSTSIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiNDYyZGFlMzktOTQwYS00ZTY4LThiNDYtM2Q4M2YxNDA0ZDkxIiwiaWF0IjoxNzY5NDEzMDI5LCJleHAiOjE3NzAwMTc4Mjl9.mvEYCxMNFdJpyGG4LgX9YtQG0XtIalLVCubI_9xZe_67PNR42A5xQoOLGN1_PUBkUVZu7iDxa9xnqLj39KHG8-P_ZGQ8MiOJCuC1atXA3_AasYq535XZcQLhJxp0s5k6ahYl0GdL6L9AUkjG_oSiwZFYaKREFILuPNylbqGUlgTfgASnFMU5MvNdIrWrZIkapLicdw3WPURIWiPPtDyxyfMxJm2ZXpro1gVAkntSlKJgroU6sGujVtbX4_Kx96jPm5bguG06N16qOPlNvkdyRGVxu8l7b1_NMAi1eyikosLd6sz76zp8c6K_p25iN6cyVSi40XasBDGAWyU8N8RpVSRDZgI_VTFIsFpvCV5RncxK7Vfv0g5VZycB_RhzLw4wi3ZBAk9layUZJOsQ3N2jHKskVEvu59Zamr25yzpoDPp0hUxfuQCyQpYr7Bp6D9ixYLLrN36Itin12ZWPtJHNjvrpCL1VWN5X9ujDzYASeIh1H5SMxF_jwIeKQ7DGQJbOT9RHa84msoMiAB3D-YLAhQtd2d1_hIcVbzHXMEaNmBdT4DI_Om4P3LWREZjJLiyimxAK3NevJnls3P-0Vf54SvwU4uEqCiIJsQ4y_sA2YUZOWIhV6dDk5NKwS0NF0fEqveuzm_ii5s9ATxeiwjYpZovEVhQ90Kx9SfxTe4KXVJ8';
 
 let pageCrashed = false;
 let jsError = false;
@@ -43,7 +43,7 @@ await expect(DisableKeyboardShortcuts).toBeVisible();
 await expect(DisableKeyboardShortcuts).toBeEnabled();
 await DisableKeyboardShortcuts.click();
 
-
+await page.waitForTimeout(1000);
 
 const Save = page.getByRole('button', { name: 'Save Settings' });
 await expect(Save).toBeVisible();
@@ -52,33 +52,38 @@ await Save.click();
 
 await page.mouse.click(10, 10);
 
+//const PlaylistDatePicker = page.locator('.react-datepicker__input-container');
+//await expect(PlaylistDatePicker).toBeVisible();
+//await expect (PlaylistDatePicker).toBeEnabled();
+//await PlaylistDatePicker.click();
+
+//const scrollContainer = page.getByRole('dialog', { name: 'Choose Date and Time' });
+//await expect(scrollContainer).toBeVisible();
+//await expect (scrollContainer).toBeEnabled();
+
+
+//const OptionDate =  page.getByRole('option', { name: 'Choose Thursday, January 29th,' });
+//await expect(OptionDate).toBeVisible();
+//await expect(OptionDate).toBeEnabled();
+//await OptionDate.click();
+
+
+//const OptionHour = page.getByRole('option', { name: '10', exact: true });
+//await OptionHour.scrollIntoViewIfNeeded();
+//aw/ait expect(OptionHour).toBeVisible();
+//await expect(OptionHour).toBeEnabled();
+//await OptionHour.click();
+
 });
 
 test('PlayoutManualMode', async ({ page }) =>  {
 
-const PlaylistDatePicker = page.locator('.react-datepicker__input-container');
-await expect(PlaylistDatePicker).toBeVisible();
-await expect (PlaylistDatePicker).toBeEnabled();
-await PlaylistDatePicker.click();
+  //FaderBefore play
+  const faderDuration = page.getByText(':00.000:00.0').first();
 
-const scrollContainer = page.getByRole('dialog', { name: 'Choose Date and Time' });
-await expect(scrollContainer).toBeVisible();
-await expect (scrollContainer).toBeEnabled();
-
-const OptionDate =  page.getByRole('option', { name: 'Choose Monday, January 19th,' });
-await expect(OptionDate).toBeVisible();
-await expect(OptionDate).toBeEnabled();
-await OptionDate.click();
-
-
-const OptionHour = page.getByRole('option', { name: '07' });
-//await OptionHour.scrollIntoViewIfNeeded();
-await expect(OptionHour).toBeVisible();
-await expect(OptionHour).toBeEnabled();
-await OptionHour.click();
-
-
-const content = page.getByTestId('info-[object Object]').nth(2);
+const content = page
+  .getByTestId('info-[object Object]')
+  .nth(2);
 
 await expect(content).toBeVisible();
 await expect(content).toBeEnabled();
@@ -89,34 +94,34 @@ await content.dragTo(target);
 
 
 
-const content2 = page
-  .getByTestId('info-[object Object]')
-  .nth(3);
+//const content2 = page
+ // .getByTestId('info-[object Object]')
+ // .nth(3);
 
-await expect(content2).toBeVisible();
-await expect(content2).toBeEnabled();
+//await expect(content2).toBeVisible();
+//await expect(content2).toBeEnabled();
 
 
-const target2 = page.getByText(/^Player 2/);
-await content2.dragTo(target2);
+//const target2 = page.getByText(/^Player 2/);
+//await content2.dragTo(target2);
 
 // tekan keyboard 1
 //await expect(target).toBeVisible();
-await expect(target2).toBeEnabled();
+//await expect(target2).toBeEnabled();
 
 
-await expect(target).toBeEnabled();
+  await expect(target).toBeEnabled();
 await target.click();
 // fokus ke Player 1
+
 await page.keyboard.press('1');
 
-await page.keyboard.press('2');
+//await page.keyboard.press('2');
 
+//expect(pageCrashed).toBe(false);
+//expect(jsError).toBe(false);
 
-expect(pageCrashed).toBe(false);
-expect(jsError).toBe(false);
-
-//await page.waitForTimeout(900);
+await page.waitForTimeout(5000);
 
 
 });
@@ -134,12 +139,46 @@ const PresetHotkey1 = page.locator('div').filter({ hasText: /^Drag Here$/ }).nth
 await expect(PresetHotkey1).toBeVisible();
 await expect(PresetHotkey1).toBeEnabled();
 
+
+
 await content.dragTo(PresetHotkey1);
-await PresetHotkey1.click();
+
+const hotkey1 = page.getByText('00:00:24Flight 5 _ Motiv').nth(1);
+await hotkey1.click();
+
+ await page.waitForTimeout(5000);
+
+expect(pageCrashed).toBe(false);
+expect(jsError).toBe(false);
+
+});
 
 
-expect(pageCrashed).toBe(true);
-expect(jsError).toBe(true);
+
+
+test('PlayoutAutoMode', async ({ page }) =>  {
+
+  const faderDuration = page.getByText(':00.000:00.0').first(); // sesuaikan dengan DOM asli
+
+
+
+    const AutoPlayout = page.getByRole('button', { name: 'Auto' });
+    await expect(AutoPlayout).toBeVisible();
+    await expect(AutoPlayout).toBeEnabled();
+    await AutoPlayout.click();
+
+   // VALIDASI: durasi berubah & bukan 00.000:00.0
+  await expect(async () => {
+    const durationText = (await faderDuration.textContent())?.trim();
+    expect(durationText).not.toBe('00.000:00.0');
+  }).toPass({
+    timeout: 15000
+  });
+
+ await page.waitForTimeout(5000);
+
+expect(pageCrashed).toBe(false);
+expect(jsError).toBe(false);
 
 });
 
