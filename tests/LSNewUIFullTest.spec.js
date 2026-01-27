@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjA4NmVjMjdlLTRkYjctNDI5NC1hNmQ4LWY4NTg2YmYxMDdkMyJ9.eyJ1c2VyTGl2ZUlkIjoiMzlkMzJkNWItZTA3YS00NWE2LTkyYWUtMmExOTY3MTY2YTE5Iiwicm9vbUlEIjoiQlJNLUIzLUJSWCIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NSwibWljRmFkZXJMYWJlbCI6Ik5FVyIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLVNHLVNUQUdJTkciLCJuZXR3b3JrQ29kZSI6IkJSWCIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQnJpbGx1eCBSYWRpbyIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9icmlsbHV4LXJhZGlvLnBuZyIsInJhZGlvQ29kZSI6IkJSTSIsImNoYW5uZWxJZCI6IjE1OTMiLCJuZXR3b3JrSWQiOiIxMTQiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkJSTSIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiNDYyZGFlMzktOTQwYS00ZTY4LThiNDYtM2Q4M2YxNDA0ZDkxIiwiaWF0IjoxNzY5NDEzMDI5LCJleHAiOjE3NzAwMTc4Mjl9.mvEYCxMNFdJpyGG4LgX9YtQG0XtIalLVCubI_9xZe_67PNR42A5xQoOLGN1_PUBkUVZu7iDxa9xnqLj39KHG8-P_ZGQ8MiOJCuC1atXA3_AasYq535XZcQLhJxp0s5k6ahYl0GdL6L9AUkjG_oSiwZFYaKREFILuPNylbqGUlgTfgASnFMU5MvNdIrWrZIkapLicdw3WPURIWiPPtDyxyfMxJm2ZXpro1gVAkntSlKJgroU6sGujVtbX4_Kx96jPm5bguG06N16qOPlNvkdyRGVxu8l7b1_NMAi1eyikosLd6sz76zp8c6K_p25iN6cyVSi40XasBDGAWyU8N8RpVSRDZgI_VTFIsFpvCV5RncxK7Vfv0g5VZycB_RhzLw4wi3ZBAk9layUZJOsQ3N2jHKskVEvu59Zamr25yzpoDPp0hUxfuQCyQpYr7Bp6D9ixYLLrN36Itin12ZWPtJHNjvrpCL1VWN5X9ujDzYASeIh1H5SMxF_jwIeKQ7DGQJbOT9RHa84msoMiAB3D-YLAhQtd2d1_hIcVbzHXMEaNmBdT4DI_Om4P3LWREZjJLiyimxAK3NevJnls3P-0Vf54SvwU4uEqCiIJsQ4y_sA2YUZOWIhV6dDk5NKwS0NF0fEqveuzm_ii5s9ATxeiwjYpZovEVhQ90Kx9SfxTe4KXVJ8';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImJmODgyY2M4LWY5YjItNDE5NC1hYjMyLWUyZjdhODM4NTFhMCJ9.eyJ1c2VyTGl2ZUlkIjoiNTlkNjRlN2YtZGUyMi00ODJmLTkwYjEtMjdkYjk2NjgxMzJjIiwicm9vbUlEIjoiRlJCLU0xLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IlRFU1QiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1JRC1KS1QiLCJuZXR3b3JrQ29kZSI6IkJXRSIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQmF5ZXJud2VsbGUiLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYndlLnN2ZyIsInJhZGlvQ29kZSI6IkZSQiIsImNoYW5uZWxJZCI6IjU2MyIsIm5ldHdvcmtJZCI6IjYwIiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJGUkIiLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6ImMyMzQwNjZiLTQ1YmUtNGY5Mi05YmI5LWRjYWUwMmUyOTU4ZiIsImlhdCI6MTc2OTQ5NDMwOCwiZXhwIjoxNzY5NTgwNzA4fQ.ECgTpVhguw9FjM6pS-G2LNcCdJj7EqJcGIGOwpALboNrRQOWHvV4vtNNuYP7fT4NQHo6WH7AIijYvmpANoUHfbTxgvxXW_D-yIWZsKDZz-aVv2Ek_0Z3mxTvAH8i_Z4QTDZVp_RPejuFyARLgsbNsfmzHUKj1_P2TT13Lj9Rj6hoH6wy2Q8OyzpRISzIH5Vu_i5V7uoOjovhnae9xm54IL_xj8olwhje8nCWJ5NLjEiAaEeVXpGBCeYlDf9T_2s4w5bv6KFpe231bdk_Mo5XtiR8RwozDQac5z2M26KeZ6C3YJVABIwb-AlJpJ9hskN97Uua14C9Vl6cMlS_m9CAKrxmdRu2pNfhBfgoSZvkcrzDyxulD3nNvEgoTCYkya4SUrPppW0uVGre8olDPQusz9PQw23g9whYhUUnh0UcPdE1cKJ56sQqa2X29BHEw0DFGYEoUb7QHzDrLZjYKEgR37qnO-0gUqwa9_DocKRB6XQa-a-Fx6oESCe-pGFZg95pTHFJDYnq_dC5toPAQRr_hhzyJPAhMyGRh3O19olXnkaqrnYkVzM5PibvsAKenk3g7G2m_7zmIwoPSIvvM0ArmoU8kRDr3RTw2dYnfn5xKZJTJ6q1mNFyo50wMqrxMW0JbwYBeB4g5Clc1x9lvLA93x7kJYeNl7ifcUjqGkM5jZY';
 
 let pageCrashed = false;
 let jsError = false;
@@ -43,43 +43,38 @@ await expect(DisableKeyboardShortcuts).toBeVisible();
 await expect(DisableKeyboardShortcuts).toBeEnabled();
 await DisableKeyboardShortcuts.click();
 
-await page.waitForTimeout(1000);
-
 const Save = page.getByRole('button', { name: 'Save Settings' });
 await expect(Save).toBeVisible();
 await expect(Save).toBeEnabled();
 await Save.click();
 
-await page.mouse.click(10, 10);
+await page.keyboard.press('Escape');
 
-//const PlaylistDatePicker = page.locator('.react-datepicker__input-container');
-//await expect(PlaylistDatePicker).toBeVisible();
-//await expect (PlaylistDatePicker).toBeEnabled();
-//await PlaylistDatePicker.click();
-
-//const scrollContainer = page.getByRole('dialog', { name: 'Choose Date and Time' });
-//await expect(scrollContainer).toBeVisible();
-//await expect (scrollContainer).toBeEnabled();
+const scrollContainer = page.getByRole('dialog', { name: 'Choose Date and Time' });
+await expect(scrollContainer).toBeVisible();
+await expect (scrollContainer).toBeEnabled();
 
 
-//const OptionDate =  page.getByRole('option', { name: 'Choose Thursday, January 29th,' });
-//await expect(OptionDate).toBeVisible();
-//await expect(OptionDate).toBeEnabled();
-//await OptionDate.click();
+const OptionDate =  page.getByRole('option', { name: 'Choose Thursday, January 29th,' });
+await expect(OptionDate).toBeVisible();
+await expect(OptionDate).toBeEnabled();
+await OptionDate.click();
 
 
-//const OptionHour = page.getByRole('option', { name: '10', exact: true });
-//await OptionHour.scrollIntoViewIfNeeded();
-//aw/ait expect(OptionHour).toBeVisible();
-//await expect(OptionHour).toBeEnabled();
-//await OptionHour.click();
+const OptionHour = page.getByRole('option', { name: '10', exact: true });
+await OptionHour.scrollIntoViewIfNeeded();
+await expect(OptionHour).toBeVisible();
+await expect(OptionHour).toBeEnabled();
+await OptionHour.click(); PlaylistDatePicker = page.locator('.react-datepicker__input-container');
+await expect(PlaylistDatePicker).toBeVisible();
+await expect (PlaylistDatePicker).toBeEnabled();
+await PlaylistDatePicker.click();
+
 
 });
 
 test('PlayoutManualMode', async ({ page }) =>  {
 
-  //FaderBefore play
-  const faderDuration = page.getByText(':00.000:00.0').first();
 
 const content = page
   .getByTestId('info-[object Object]')
@@ -89,39 +84,57 @@ await expect(content).toBeVisible();
 await expect(content).toBeEnabled();
 
 
-const target = page.getByText(/^Player 1/);
+const target = page.locator('div').filter({ hasText: /^Player 1$/ }).first();
+await expect(target).toBeVisible();
+    await expect(target).toBeEnabled();
+//FaderBefore play
+  const faderDuration = page.getByText(':00.000:00.0').first();
+
 await content.dragTo(target);
 
+const content2 = page
+ .getByTestId('info-[object Object]')
+ .nth(3);
+
+await expect(content2).toBeVisible();
+await expect(content2).toBeEnabled();
 
 
-//const content2 = page
- // .getByTestId('info-[object Object]')
- // .nth(3);
 
-//await expect(content2).toBeVisible();
-//await expect(content2).toBeEnabled();
+const target2 = page.locator('div').filter({ hasText: /^Player 2$/ }).first();
+await expect(target2).toBeVisible();
+    await expect(target2).toBeEnabled();
+    //FaderBefore play
+const fader2Duration = page.getByText(':00.000:00.0').first();
 
+await content2.dragTo(target2);
+await page.waitForTimeout(7000);
 
-//const target2 = page.getByText(/^Player 2/);
-//await content2.dragTo(target2);
-
-// tekan keyboard 1
-//await expect(target).toBeVisible();
-//await expect(target2).toBeEnabled();
-
-
-  await expect(target).toBeEnabled();
-await target.click();
-// fokus ke Player 1
 
 await page.keyboard.press('1');
 
-//await page.keyboard.press('2');
+await page.keyboard.press('2');
 
-//expect(pageCrashed).toBe(false);
-//expect(jsError).toBe(false);
+// VALIDASI: durasi berubah & bukan 00.000:00.0
+    await expect(async () => {
+    const durationText = (await fader2Duration.textContent())?.trim();
+    expect(durationText).not.toBe('00.000:00.0');
+  }).toPass({
+    timeout: 7000
+  });
 
-await page.waitForTimeout(5000);
+  // VALIDASI: durasi berubah & bukan 00.000:00.0
+    await expect(async () => {
+    const durationText = (await faderDuration.textContent())?.trim();
+    expect(durationText).not.toBe('00.000:00.0');
+  }).toPass({
+    timeout: 7000
+  });
+  
+expect(pageCrashed).toBe(false);
+expect(jsError).toBe(false);
+
+await page.waitForTimeout(7000);
 
 
 });
@@ -153,9 +166,6 @@ expect(jsError).toBe(false);
 
 });
 
-
-
-
 test('PlayoutAutoMode', async ({ page }) =>  {
 
   const faderDuration = page.getByText(':00.000:00.0').first(); // sesuaikan dengan DOM asli
@@ -184,17 +194,6 @@ expect(jsError).toBe(false);
 
 
 
-
-//const linkmode = page.locator('.info_box.box2 > .info_box_container > .link-mode');
-//await expect(linkmode).toBeVisible();
-//await expect(linkmode).toBeEnabled();
-//await linkmode.click();
-
-//const PresetHotkey1 = page.locator('div').filter({ hasText: /^Drag Here$/ }).nth(5);
-//await expect(PresetHotkey1).toBeVisible();
-//await expect(PresetHotkey1).toBeEnabled();
-
-//await content.dragTo(PresetHotkey1);
 
 
 
