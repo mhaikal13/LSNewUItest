@@ -50,11 +50,11 @@ await page.keyboard.press('Escape');
 test('PlayoutManual', async ({ page }) =>  {
 
 
-const content = page.getByTestId('info-[object Object]').nth(3);
+const content = page.getByTestId('info-[object Object]').nth(4);
   await expect(content).toBeVisible();
   await expect(content).toBeEnabled();
 
-  const linkmode = page.locator('.info_box.box3 > .info_box_container > .link-mode');
+  const linkmode = page.locator('.info_box.box4 > .info_box_container > .link-mode');
   await expect(linkmode).toBeVisible();
   await expect(linkmode).toBeEnabled();
 
@@ -69,26 +69,30 @@ const content = page.getByTestId('info-[object Object]').nth(3);
   await page.waitForTimeout(5000);
   await page.keyboard.press('1');
 
- const timerHandle = await page.locator('[role="player1"] .timer_dtime').first().elementHandle();
 
-  // Ambil waktu awal
-  const beforeEnd = await page.evaluate(el => {
-    const [mm, rest] = el.innerText.split(':');
-    return +mm * 60 + +rest.split('.')[0];
-  }, timerHandle);
+ const timer = page.locator('[role="player2"] .timer_dtime').first(); //ambil element timer
+  let last = await timer.innerText(); // ambil durasi setelah link masuk
+ 
+//  // tunggu sampai timer berubah → player mulai play
+//  await expect.poll(async () => {
+//    const current = await timer.innerText(); 
+//    const started = current !== last; 
+ 
+//    return started;
+//  }, { timeout: 13000, 
+//       intervals: [200] }).toBe(true);
+ 
+//  console.log('Player started!');
 
-  // Tunggu sampai timer lebih kecil dari sebelumnya → looping
-  await page.waitForFunction(
-    (el, prev) => {
-      const [mm, rest] = el.innerText.split(':');
-      const current = +mm * 60 + +rest.split('.')[0];
-      return current < prev; // timer reset → looping
-    },
-    timerHandle,
-    beforeEnd
-  );
+  last = '';
+await expect.poll(async () => {
+  const current = await timer.innerText();
+  const stopped = current === last;
+  last = current;
+  return stopped;
+}, {  timeout: 16000, intervals: [200] }).toBe(true);
 
-  console.log('Looping detected!');
+console.log('Player finished!');
 
  
 //   const content2 = page
