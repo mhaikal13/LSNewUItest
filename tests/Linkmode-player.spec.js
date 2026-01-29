@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImJmODgyY2M4LWY5YjItNDE5NC1hYjMyLWUyZjdhODM4NTFhMCJ9.eyJ1c2VyTGl2ZUlkIjoiNTlkNjRlN2YtZGUyMi00ODJmLTkwYjEtMjdkYjk2NjgxMzJjIiwicm9vbUlEIjoiRlJCLU0xLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IlRFU1QiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1JRC1KS1QiLCJuZXR3b3JrQ29kZSI6IkJXRSIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQmF5ZXJud2VsbGUiLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYndlLnN2ZyIsInJhZGlvQ29kZSI6IkZSQiIsImNoYW5uZWxJZCI6IjU2MyIsIm5ldHdvcmtJZCI6IjYwIiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJGUkIiLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6ImMyMzQwNjZiLTQ1YmUtNGY5Mi05YmI5LWRjYWUwMmUyOTU4ZiIsImlhdCI6MTc2OTQ5NDMwOCwiZXhwIjoxNzY5NTgwNzA4fQ.ECgTpVhguw9FjM6pS-G2LNcCdJj7EqJcGIGOwpALboNrRQOWHvV4vtNNuYP7fT4NQHo6WH7AIijYvmpANoUHfbTxgvxXW_D-yIWZsKDZz-aVv2Ek_0Z3mxTvAH8i_Z4QTDZVp_RPejuFyARLgsbNsfmzHUKj1_P2TT13Lj9Rj6hoH6wy2Q8OyzpRISzIH5Vu_i5V7uoOjovhnae9xm54IL_xj8olwhje8nCWJ5NLjEiAaEeVXpGBCeYlDf9T_2s4w5bv6KFpe231bdk_Mo5XtiR8RwozDQac5z2M26KeZ6C3YJVABIwb-AlJpJ9hskN97Uua14C9Vl6cMlS_m9CAKrxmdRu2pNfhBfgoSZvkcrzDyxulD3nNvEgoTCYkya4SUrPppW0uVGre8olDPQusz9PQw23g9whYhUUnh0UcPdE1cKJ56sQqa2X29BHEw0DFGYEoUb7QHzDrLZjYKEgR37qnO-0gUqwa9_DocKRB6XQa-a-Fx6oESCe-pGFZg95pTHFJDYnq_dC5toPAQRr_hhzyJPAhMyGRh3O19olXnkaqrnYkVzM5PibvsAKenk3g7G2m_7zmIwoPSIvvM0ArmoU8kRDr3RTw2dYnfn5xKZJTJ6q1mNFyo50wMqrxMW0JbwYBeB4g5Clc1x9lvLA93x7kJYeNl7ifcUjqGkM5jZY');
+  await page.goto('https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjRiNzUyMjFkLTA1NmEtNGFmZi1iMWY0LWExYzcwNWUwZGFkMSJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiQlJNLUIxLUJSWCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjoiNCIsIm1pY0ZhZGVyTGFiZWwiOiJURVNUIiwiYml0UmF0ZSI6MjU2MDAwLCJtaWNBbHdheXNPbiI6ZmFsc2UsInNlcnZlckNvZGUiOiJBV1MtU0ctU1RBR0lORyIsIm5ldHdvcmtDb2RlIjoiQlJYIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQnJpbGx1eCBSYWRpbyIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9icmlsbHV4LXJhZGlvLnBuZyIsInJhZGlvQ29kZSI6IkJSTSIsImNoYW5uZWxJZCI6IjE1OTMiLCJuZXR3b3JrSWQiOiIxMTQiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkJSTSIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiNmM3YjJhZDUtYTI5ZC00ODY1LWI2MTYtZWNiNzVlZDQ4ZTc5IiwiaWF0IjoxNzY5NTA5NjczLCJleHAiOjE4MjEzNDk2NzN9.q4tXmOEpzJ6_iE2QxtvSqkHhQOxfKQbbfzZmasDxfnlAIBGAIjVkruJDYFwpD2QBIVYBppeGF_KlYQW1M_ePaQSOT80X5XbbepQvphuG5yqB_3BvjS9DktH3RESveww_jQ-tEGr3OQvF66QmnP1Xb9aswbCociA3QbLR4ytw2lFehc7ZMKcss8xXV6nGZFtvB9TZMwT1hNu2QPydujyvIb6ElcWHej_DdB2MFHsuIXBmf1-yH_2068WRn5ZC6Hewt2co2lRHZmlMkiWeYEn2ZVzcUb5mrO-1DxUN8H6GI0gIwhcYgQP7FHTDjEIScPt1x_W7YZbsfYZSCx84jeloVQQFOsJ-D1K6ZudectDWsRSMoqixPuyhNp7gJNQl6Cmi6kFJrYc7apCevDmhwW6wVrxLLI_NXUJ74GaFgmU4togDfBFO-q6wDu_QCjKAZVJSnKh04Pqh6Y1b4Hmmx2OB_I1ckKiuUWEE5CTNkC8P-HFJ2joP_r2YRndCcCHPnNpeAbj0Ek459DZ3KRdwjuWSx9aOKOzkyW3YkOQAIlyq27xtQc6W2-pKgiZ69X_FKWi2AZyefmyZHIef5ZO7axL-X9IY7lnecT8gXep7DwD6u8R5ztmQiXzy3mO4-lCDuHT23whNS1WD1Z_Wxzye1QriNo1131TM5RGfM0paXT-RSjA');
 
 
   const  okButton = page.getByRole('button', { name: 'OK' });
@@ -65,8 +65,10 @@ test('BUG LINK MODE', async ({ page }) =>  {
   await expect(typecontent).toBeVisible();
   await expect(typecontent).toBeEnabled();
   await typecontent.selectOption('12000');
+  
+  const contentaddaudio = page.getByText('00:01:0627.01.26 11.01 - 13.');
 
-  const contentaddaudio = page.getByText('00:01:0527.01.26 03.01 - 05.');
+  await contentaddaudio.scrollIntoViewIfNeeded();
   await expect(contentaddaudio).toBeVisible();
   await expect(contentaddaudio).toBeEnabled();
 
@@ -92,7 +94,7 @@ test('BUG LINK MODE', async ({ page }) =>  {
   await linkmode.click();
 
 
-  const player1 = page.locator('div').filter({ hasText: /^Player 2$/ }).first();
+  const player1 = page.locator('div').filter({ hasText: /^Player 1$/ }).first();
   await expect(player1).toBeVisible();
     await expect(player1).toBeEnabled();
   //FaderBefore play
@@ -102,7 +104,7 @@ test('BUG LINK MODE', async ({ page }) =>  {
 
   await page.waitForTimeout(7000);
 
-  await page.keyboard.press('2');
+  await page.keyboard.press('1');
 
   // VALIDASI: durasi berubah & bukan 00.000:00.0
     await expect(async () => {
