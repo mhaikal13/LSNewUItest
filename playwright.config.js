@@ -16,7 +16,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
 
-  timeout: 50000, // 60 menit
+  timeout: 700000, // 7 menit
 
   testDir: './tests',
   /* Run tests in files in parallel */

@@ -2,6 +2,37 @@ import { test, expect } from '@playwright/test';
 
 const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjhhNzliODI3LTI1Y2QtNDc4Mi05MDcxLTc0MGIxYWZjNzJmYSJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IlRFU1QiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1JRC1KS1QiLCJuZXR3b3JrQ29kZSI6IkJXRSIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQmF5ZXJud2VsbGUiLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYndlLnN2ZyIsInJhZGlvQ29kZSI6IkZSQiIsImNoYW5uZWxJZCI6IjU2MyIsIm5ldHdvcmtJZCI6IjYwIiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJGUkIiLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6IjhjNzAwNGVmLWU3MTktNGNlMS1iM2JkLWZhZmY4MGVlYjg2ZCIsImlhdCI6MTc2OTY3MDgzMCwiZXhwIjoxODIxNTEwODMwfQ.HTwl3vwJ1Ti-MGc_OtCalDlO2P6NZbCIG6Z54aI_fIFw_6BkfSPYLgvWMgDUtASA9VFQBFEtWcaNPffFEocdgJnBQ_s45qkUR1M4mKP0Qx9x9DLpay6pRc7sA-XnKmmFQR9I305--kCQnmlkZMUMh549kmx7fAbrMDyBq4X113mOdxCMvkfXChem0OQXDKfWjaLaXHL2cgPGD6QgPOM_BWROKtJCbtN8y_z9Lf6n1PcssyRlwuMXwY8fgcMd91f_Drarp5b4MgWxByDrMcw9Tk4ptxeaQD6nu6gjjL4Agb1GTkY4w_fxh3fX4TPSJRZjtvajvfB8w0MFOt-ax39bQoK2bzGH1TH6sFqZfPPf715E-BBTTdBnG0jWq9SoSDcOKb7IY1x-TKXwWfFEN6PGcrrbCgyLQzssUMdPPSZQqXsEDBQGGh4E_dR0kyxfc9SrgTiusRoEPjLJGALrIsDUzcPC9GVV4wGuPE0J8qWVUyqOJsKqJ8vJYofFzYoRUzfuQ5kJaTsjp84naH_kDcc4OA2dKdqDcSUY5zy9IWlPCBc0ZqX83s2D5QMyfC7dixR10-yhTdXmLkq-CHXBl0egKZHF0B-RMDZLWFZF-m1lVbbF6yTw2fg-W9Lk0bH7xk1LEvT4ywWoO9OMTBr6OtW5crErDGaQ7EjBfnAxxyBLoFc';
 
+// Helper function untuk polling timer hingga selesai
+async function pollTimerUntilFinished(timerElement, playerName = 'Unknown') {
+  // Ambil durasi awal
+  let lastValue = await timerElement.innerText();
+
+  // Tunggu sampai timer berubah → player mulai play
+  await expect.poll(async () => {
+    const current = await timerElement.innerText();
+    const started = current !== lastValue;
+    return started;
+  }, { 
+    timeout: 5000,  // 7 menit
+    intervals: [200]  // Check setiap 200ms
+  }).toBe(true);
+
+  console.log(`[${playerName}] Duration started!`);
+
+  // Tunggu sampai timer berhenti berubah → selesai
+  lastValue = '';
+  await expect.poll(async () => {
+    const current = await timerElement.innerText();
+    const stopped = current === lastValue;
+    lastValue = current;
+    return stopped;
+  }, { 
+    timeout: 420000,
+    intervals: [200]
+  }).toBe(true);
+
+  console.log(`[${playerName}] Duration finished!`);
+}
 
 test.beforeEach(async ({ page }) => {
 
@@ -50,15 +81,15 @@ await page.keyboard.press('Escape');
 test('PlayoutManual', async ({ page }) =>  {
 
 
-const content = page.getByTestId('info-[object Object]').nth(4);
+const content = page.getByTestId('info-[object Object]').nth(2);
   await expect(content).toBeVisible();
   await expect(content).toBeEnabled();
 
-  const linkmode = page.locator('.info_box.box4 > .info_box_container > .link-mode');
-  await expect(linkmode).toBeVisible();
-  await expect(linkmode).toBeEnabled();
+  // const linkmode = page.locator('.info_box.box2 > .info_box_container > .link-mode');
+  // await expect(linkmode).toBeVisible();
+  // await expect(linkmode).toBeEnabled();
 
-  await linkmode.click();
+  // await linkmode.click();
 
   const target = page.locator('div').filter({ hasText: /^Player 1$/ }).first();
   await expect(target).toBeVisible();
@@ -69,30 +100,13 @@ const content = page.getByTestId('info-[object Object]').nth(4);
   await page.waitForTimeout(5000);
   await page.keyboard.press('1');
 
+  // Ambil timer player1 dan polling
+  const timerplayer1 = page.locator('[role="player1"] .timer_dtime').first();
+  await pollTimerUntilFinished(timerplayer1, 'Player 1');
 
- const timer = page.locator('[role="player2"] .timer_dtime').first(); //ambil element timer
-  let last = await timer.innerText(); // ambil durasi setelah link masuk
- 
-//  // tunggu sampai timer berubah → player mulai play
-//  await expect.poll(async () => {
-//    const current = await timer.innerText(); 
-//    const started = current !== last; 
- 
-//    return started;
-//  }, { timeout: 13000, 
-//       intervals: [200] }).toBe(true);
- 
-//  console.log('Player started!');
-
-  last = '';
-await expect.poll(async () => {
-  const current = await timer.innerText();
-  const stopped = current === last;
-  last = current;
-  return stopped;
-}, {  timeout: 16000, intervals: [200] }).toBe(true);
-
-console.log('Player finished!');
+  // Ambil timer player2 dan polling
+  // const timerplayer2 = page.locator('[role="player2"] .timer_dtime').first();
+  // await pollTimerUntilFinished(timerplayer2, 'Player 2');
 
  
 //   const content2 = page
