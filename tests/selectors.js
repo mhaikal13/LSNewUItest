@@ -12,12 +12,12 @@ export const ButtonOK = () => {
 // ============================================================================
 
 export const playerByRole = (playerName) => {
-   playerName: 'player1', 'player2', 'player3', 'hotkey1', 'hotkey2', 'SipRemoteAudio'
+  // playerName: 'player1', 'player2', 'player3', 'hotkey1', 'hotkey2', 'SipRemoteAudio'
   return `[role="${playerName}"]`;
 };
 
 export const playerContainer = (playerNumber) => {
-   playerNumber: 1, 2, 3
+ //  playerNumber: 1, 2, 3
   return `[role="player${playerNumber}"]`;
 };
 

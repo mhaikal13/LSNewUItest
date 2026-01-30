@@ -31,14 +31,19 @@ test.beforeEach(async ({ page }) => {
 
 test('LiveStudio CHECK PLAYER', async ({ page }) =>  {
 
-  const player1Duration = page.locator(playerByRole('player1') + ' .timer_dtime').first();
-await expect(player1Duration).toBeVisible();
-await expect(player1Duration).toBeEnabled();
 
-const playlistItem1 = page.locator(playlistItemByIndex(1)).first();
+
+const playlistItem1 = page.locator(playlistItemByIndex(7)).first();
 await expect(playlistItem1).toBeVisible();
 await expect(playlistItem1).toBeEnabled();
 
-await page.waitForTimeout(120000);
+const playerByrole = page.locator(playerByRole('player1'));
+await expect(playerByrole).toBeVisible();
+await expect(playerByrole).toBeEnabled();
+
+await playlistItem1.dragTo(playerByrole);
+
+await page.waitForTimeout(1000);
 
 });
+
