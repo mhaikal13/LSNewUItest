@@ -65,11 +65,11 @@ await page.waitForTimeout(7000);
 
 // Ensure page has focus before pressing keyboard
 await page.click('body');
-await page.waitForTimeout(500);
+await page.waitForTimeout(700);
 
 // Press key 2
 await page.keyboard.press('2');
-console.log('✓ Key 2 pressed');
+console.log('---------------------------player 2 started--------------------------');
 
 
 await page.waitForTimeout(16000);
@@ -88,8 +88,6 @@ console.log('Drag and Drop Content to Player1');
 await page.waitForTimeout(7000);  
 
 // Ensure page has focus before pressing keyboard
-await page.click('body');
-await page.waitForTimeout(500);
 
 // Press key 1
 await page.keyboard.press('1');
