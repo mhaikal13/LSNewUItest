@@ -47,6 +47,31 @@ export const playerSyncButton = (playerNumber) => {
   return `[role="player${playerNumber}"] .syncBtn`;
 };
 
+export const playerTitleText = (playerNumber) => {
+  // The actual title text element (e.g., "Player 1")
+  return `[role="player${playerNumber}"] #title-text`;
+};
+
+export const playerElapsedTime = (playerNumber) => {
+  // Elapsed time timer (first .timer_dtime)
+  return `[role="player${playerNumber}"] .timer_dtime:nth-child(1)`;
+};
+
+export const playerRemainingTime = (playerNumber) => {
+  // Remaining time timer (second .timer_dtime)
+  return `[role="player${playerNumber}"] .timer_dtime:nth-child(2)`;
+};
+
+export const playerSongTitles = (playerNumber) => {
+  // Container for song artist and title
+  return `[role="player${playerNumber}"] .song-titles`;
+};
+
+export const playerMeterContainer = (playerNumber) => {
+  // The meter visualization container
+  return `[role="player${playerNumber}"] .meter-container`;
+};
+
 // ============================================================================
 // Playlist & Content Items (info_box, draggable items)
 // ============================================================================
