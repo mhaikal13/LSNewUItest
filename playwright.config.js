@@ -1,8 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
-
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -16,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
 
+  
   timeout: 700000, // 7 menit
 
   testDir: './tests',
@@ -38,6 +37,13 @@ export default defineConfig({
  // },
   /* Configure projects for major browsers */
   use: {
+
+     viewport: { width: 1366, height: 768 },
+  launchOptions: {
+    args: ['--start-maximized'],
+  },
+    video: 'on',
+    screenshot: 'only-on-failure',
     headless: false,
     trace: 'on-first-retry',
   },
