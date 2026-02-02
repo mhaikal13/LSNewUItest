@@ -67,7 +67,7 @@ await expect(OptionDate).toBeVisible();
 await expect(OptionDate).toBeEnabled();
 await OptionDate.click();
 
-await page.waitForTimeout(6000);
+await page.waitForTimeout(4000);
 
 const OptionHour = page.getByRole('option', { name: '10', exact: true });
 await OptionHour.scrollIntoViewIfNeeded();
@@ -75,7 +75,7 @@ await expect(OptionHour).toBeVisible();
 await expect(OptionHour).toBeEnabled();
 await OptionHour.click();
 
-await page.waitForTimeout(6000);
+await page.waitForTimeout(10000);
 
 });
 
@@ -110,7 +110,7 @@ await page.waitForTimeout(16000);
 await expect(playerByrole).toBeVisible();
 await expect(playerByrole).toBeEnabled({ timeout: 10000 });
 
-  const contentPlayer1 = page.locator(playlistItemByIndex()).nth(3);
+  const contentPlayer1 = page.locator(playlistItemByIndex()).nth(5);
 await contentPlayer1.scrollIntoViewIfNeeded();
 await expect(contentPlayer1).toBeVisible();
 await expect(contentPlayer1).toBeEnabled();
@@ -150,17 +150,46 @@ await page.keyboard.press('3');
 console.log('---------------✓ Key 3 pressed-----------------');
 
 await page.waitForTimeout(16000);
+  await page.close();
 
 
-const Content1Linkmode = page.locator(playlistItemByIndex()).nth(4);
+});
+
+test('Link Mode Check', async ({ page }) =>  {
+
+const Content1Linkmode = page.locator(playlistItemByIndex()).nth(8);
 await Content1Linkmode.scrollIntoViewIfNeeded();
 await expect(Content1Linkmode).toBeVisible();
 await expect(Content1Linkmode).toBeEnabled({ timeout: 10000 }); 
 
-const Linkmode = page.locator(playlistItemLinkModeIcon()).nth(4);
-await expect(Linkmode).toBeVisible();
-await expect(Linkmode).toBeEnabled();
-await Linkmode.click();
+const Linkmode1 = page.locator(playlistItemLinkModeIcon()).nth(8);
+await expect(Linkmode1).toBeVisible();
+await expect(Linkmode1).toBeEnabled();
+await Linkmode1.click();
+console.log('Clicked on Linkmode icon of Content1Linkmode');
+await page.waitForTimeout(5000);
+
+const Content2Linkmode = page.locator(playlistItemByIndex()).nth(9);
+await Content2Linkmode.scrollIntoViewIfNeeded();
+await expect(Content2Linkmode).toBeVisible();
+await expect(Content2Linkmode).toBeEnabled({ timeout: 10000 }); 
+
+const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(9);
+await expect(Linkmode2).toBeVisible();
+await expect(Linkmode2).toBeEnabled();
+await Linkmode2.click();
+console.log('Clicked on Linkmode icon of Content1Linkmode');
+await page.waitForTimeout(5000);
+
+const Content3Linkmode = page.locator(playlistItemByIndex()).nth(10);
+await Content3Linkmode.scrollIntoViewIfNeeded();
+await expect(Content3Linkmode).toBeVisible();
+await expect(Content3Linkmode).toBeEnabled({ timeout: 10000 }); 
+
+const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(10);
+await expect(Linkmode3).toBeVisible();
+await expect(Linkmode3).toBeEnabled();
+await Linkmode3.click();
 console.log('Clicked on Linkmode icon of Content1Linkmode');
 await page.waitForTimeout(5000);
 
@@ -179,9 +208,8 @@ await page.keyboard.press('1');
 console.log('---------------✓ Key 1 pressed for Linkmode Content-----------------');
 
 
-await page.waitForTimeout(60000);
+await page.waitForTimeout(420000);
   await page.close();
 
 });
-
 
