@@ -168,6 +168,11 @@ export const datePickerInput = () => {
   return `.react-datepicker__input-container input`;
 };
 
+export const datePickerCalendarContainer = () => {
+
+  return '.date-picker > div';
+};
+
 export const datePickerPreviousButton = () => {
   // Left arrow to navigate previous date
   return `.react-datepicker__input-container + svg`; // First SVG after input

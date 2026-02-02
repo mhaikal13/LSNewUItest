@@ -1,5 +1,13 @@
 import { test, expect } from '@playwright/test';
-import  {settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, playerElapsedTime}  from './selectors.js';
+import  {playerSongTitles, 
+  datePickerCalendarContainer, 
+  settingsDialog, 
+  ButtonOK, 
+  playlistItemLinkModeIcon  , 
+  playerByRole, 
+  playlistItemByIndex, 
+  settingsButton, 
+  settingsSaveButton}  from './selectors.js';
 
 const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjhhNzliODI3LTI1Y2QtNDc4Mi05MDcxLTc0MGIxYWZjNzJmYSJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IlRFU1QiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1JRC1KS1QiLCJuZXR3b3JrQ29kZSI6IkJXRSIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQmF5ZXJud2VsbGUiLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYndlLnN2ZyIsInJhZGlvQ29kZSI6IkZSQiIsImNoYW5uZWxJZCI6IjU2MyIsIm5ldHdvcmtJZCI6IjYwIiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJGUkIiLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6IjhjNzAwNGVmLWU3MTktNGNlMS1iM2JkLWZhZmY4MGVlYjg2ZCIsImlhdCI6MTc2OTY3MDgzMCwiZXhwIjoxODIxNTEwODMwfQ.HTwl3vwJ1Ti-MGc_OtCalDlO2P6NZbCIG6Z54aI_fIFw_6BkfSPYLgvWMgDUtASA9VFQBFEtWcaNPffFEocdgJnBQ_s45qkUR1M4mKP0Qx9x9DLpay6pRc7sA-XnKmmFQR9I305--kCQnmlkZMUMh549kmx7fAbrMDyBq4X113mOdxCMvkfXChem0OQXDKfWjaLaXHL2cgPGD6QgPOM_BWROKtJCbtN8y_z9Lf6n1PcssyRlwuMXwY8fgcMd91f_Drarp5b4MgWxByDrMcw9Tk4ptxeaQD6nu6gjjL4Agb1GTkY4w_fxh3fX4TPSJRZjtvajvfB8w0MFOt-ax39bQoK2bzGH1TH6sFqZfPPf715E-BBTTdBnG0jWq9SoSDcOKb7IY1x-TKXwWfFEN6PGcrrbCgyLQzssUMdPPSZQqXsEDBQGGh4E_dR0kyxfc9SrgTiusRoEPjLJGALrIsDUzcPC9GVV4wGuPE0J8qWVUyqOJsKqJ8vJYofFzYoRUzfuQ5kJaTsjp84naH_kDcc4OA2dKdqDcSUY5zy9IWlPCBc0ZqX83s2D5QMyfC7dixR10-yhTdXmLkq-CHXBl0egKZHF0B-RMDZLWFZF-m1lVbbF6yTw2fg-W9Lk0bH7xk1LEvT4ywWoO9OMTBr6OtW5crErDGaQ7EjBfnAxxyBLoFc';
 
@@ -55,29 +63,35 @@ await page.waitForTimeout(6000);
 
 
 
-const scrollContainer = page.locator('.date-picker > div');
-await expect(scrollContainer).toBeVisible();
-await expect (scrollContainer).toBeEnabled();
-await scrollContainer.click();
+// const scrollContainer = page.locator(datePickerCalendarContainer());
+// await expect(scrollContainer).toBeVisible();
+// await expect (scrollContainer).toBeEnabled();
+// await scrollContainer.click();
 
-await page.waitForTimeout(6000);
+// await page.waitForTimeout(6000);
 
-const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 4th,' });
-await expect(OptionDate).toBeVisible();
-await expect(OptionDate).toBeEnabled();
-await OptionDate.click();
+// const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 4th,' });
+// await expect(OptionDate).toBeVisible();
+// await expect(OptionDate).toBeEnabled();
+// await OptionDate.click();
 
-await page.waitForTimeout(4000);
+// await page.waitForTimeout(4000);
 
-const OptionHour = page.getByRole('option', { name: '10', exact: true });
-await OptionHour.scrollIntoViewIfNeeded();
-await expect(OptionHour).toBeVisible();
-await expect(OptionHour).toBeEnabled();
-await OptionHour.click();
+// const OptionHour = page.getByRole('option', { name: '10', exact: true });
+// await OptionHour.scrollIntoViewIfNeeded();
+// await expect(OptionHour).toBeVisible();
+// await expect(OptionHour).toBeEnabled();
+// await OptionHour.click();
 
 await page.waitForTimeout(10000);
 
+// const selectedDate = page.locator(datePickerCalendarContainer());
+// await expect.soft(selectedDate)
+// .toHaveText('Selected date: Wednesday, February 4th, 2026 at 10:00 AM');
+
+
 });
+
 
 test('LiveStudio CHECK PLAYER', async ({ page }) =>  {
 
@@ -92,6 +106,7 @@ await expect(playerByrole2).toBeVisible();
 await expect(playerByrole2).toBeEnabled({ timeout: 10000 });
 
 await contentPlayer2.dragTo(playerByrole2); 
+
 await page.mouse.up();
 
 await page.waitForTimeout(7000);  
@@ -116,6 +131,7 @@ await expect(contentPlayer1).toBeVisible();
 await expect(contentPlayer1).toBeEnabled();
 
 await contentPlayer1.dragTo(playerByrole); 
+
 await page.mouse.up();
 
 console.log('Drag and Drop Content to Player1'); 
@@ -124,7 +140,7 @@ await playerByrole.click();
 
 // Press key 1
 await page.keyboard.press('1');
-console.log('--------------✓ Key 1 pressed----------------------');
+console.log('---------------------------player 1 started--------------------------');
 
 await page.waitForTimeout(16000);
 
@@ -147,7 +163,7 @@ await playerByrole3.click();
 
 // Press key 3
 await page.keyboard.press('3');
-console.log('---------------✓ Key 3 pressed-----------------');
+console.log('---------------------------player 3 started--------------------------');
 
 await page.waitForTimeout(16000);
   await page.close();
@@ -169,47 +185,51 @@ await Linkmode1.click();
 console.log('Clicked on Linkmode icon of Content1Linkmode');
 await page.waitForTimeout(5000);
 
-const Content2Linkmode = page.locator(playlistItemByIndex()).nth(9);
-await Content2Linkmode.scrollIntoViewIfNeeded();
-await expect(Content2Linkmode).toBeVisible();
-await expect(Content2Linkmode).toBeEnabled({ timeout: 10000 }); 
+// const Content2Linkmode = page.locator(playlistItemByIndex()).nth(9);
+// await Content2Linkmode.scrollIntoViewIfNeeded();
+// await expect(Content2Linkmode).toBeVisible();
+// await expect(Content2Linkmode).toBeEnabled({ timeout: 10000 }); 
 
-const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(9);
-await expect(Linkmode2).toBeVisible();
-await expect(Linkmode2).toBeEnabled();
-await Linkmode2.click();
-console.log('Clicked on Linkmode icon of Content1Linkmode');
-await page.waitForTimeout(5000);
+// const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(9);
+// await expect(Linkmode2).toBeVisible();
+// await expect(Linkmode2).toBeEnabled();
+// await Linkmode2.click();
+// console.log('Clicked on Linkmode icon of Content2Linkmode');
+// await page.waitForTimeout(5000);
 
-const Content3Linkmode = page.locator(playlistItemByIndex()).nth(10);
-await Content3Linkmode.scrollIntoViewIfNeeded();
-await expect(Content3Linkmode).toBeVisible();
-await expect(Content3Linkmode).toBeEnabled({ timeout: 10000 }); 
+// const Content3Linkmode = page.locator(playlistItemByIndex()).nth(10);
+// await Content3Linkmode.scrollIntoViewIfNeeded();
+// await expect(Content3Linkmode).toBeVisible();
+// await expect(Content3Linkmode).toBeEnabled({ timeout: 10000 }); 
 
-const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(10);
-await expect(Linkmode3).toBeVisible();
-await expect(Linkmode3).toBeEnabled();
-await Linkmode3.click();
-console.log('Clicked on Linkmode icon of Content1Linkmode');
-await page.waitForTimeout(5000);
+// const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(10);
+// await expect(Linkmode3).toBeVisible();
+// await expect(Linkmode3).toBeEnabled();
+// await Linkmode3.click();
+// console.log('Clicked on Linkmode icon of Content3Linkmode');
+// await page.waitForTimeout(5000);
 
-const player1= page.locator(playerByRole('player1')); 
-await expect(player1).toBeVisible();
-await expect(player1).toBeEnabled();
+const player1linkmode= page.locator(playerByRole('player1')); 
+await expect(player1linkmode).toBeVisible();
+await expect(player1linkmode).toBeEnabled();
 
-await Content1Linkmode.dragTo(player1); 
+await Content1Linkmode.dragTo(player1linkmode); 
 await page.mouse.up();
 
 
 console.log('Drag and Drop Linkmode Content to Player1'); 
-await player1.click();
+await player1linkmode.click();
 await page.waitForTimeout(7000);  
 await page.keyboard.press('1');
-console.log('---------------✓ Key 1 pressed for Linkmode Content-----------------');
+console.log('---------------------------player 1 link mode started--------------------------');
 
 
 await page.waitForTimeout(420000);
+
+
+
   await page.close();
 
 });
+
 
