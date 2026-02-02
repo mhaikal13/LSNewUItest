@@ -42,7 +42,7 @@ export default defineConfig({
   launchOptions: {
     args: ['--start-maximized'],
   },
-    video: 'on',
+    // video: 'on',
     screenshot: 'only-on-failure',
     headless: false,
     trace: 'on-first-retry',

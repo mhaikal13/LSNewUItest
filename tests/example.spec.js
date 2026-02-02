@@ -54,6 +54,29 @@ await expect (Setting).not.toBeVisible();
 await page.waitForTimeout(6000);
 
 
+
+const scrollContainer = page.locator('.date-picker > div');
+await expect(scrollContainer).toBeVisible();
+await expect (scrollContainer).toBeEnabled();
+await scrollContainer.click();
+
+await page.waitForTimeout(6000);
+
+const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 4th,' });
+await expect(OptionDate).toBeVisible();
+await expect(OptionDate).toBeEnabled();
+await OptionDate.click();
+
+await page.waitForTimeout(6000);
+
+const OptionHour = page.getByRole('option', { name: '10', exact: true });
+await OptionHour.scrollIntoViewIfNeeded();
+await expect(OptionHour).toBeVisible();
+await expect(OptionHour).toBeEnabled();
+await OptionHour.click();
+
+await page.waitForTimeout(6000);
+
 });
 
 test('LiveStudio CHECK PLAYER', async ({ page }) =>  {
