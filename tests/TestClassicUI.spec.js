@@ -11,7 +11,7 @@ import  {
   settingsButton, 
   settingsSaveButton}  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjM1MTAxOGFiLTg5NzgtNDZlMS05ODA4LWQyZWNhNjJjZTM4OCJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IlRFU1QiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1JRC1KS1QiLCJuZXR3b3JrQ29kZSI6IkJXRSIsImFsbG93RmFkZXJDaGFuZ2UiOnRydWUsImlzU2VydmVyIjowLCJlY2hvQ29tcGVuc2F0aW9uRW5hYmxlIjpmYWxzZSwicmVvcmRlckZhZGVyIjpmYWxzZSwidGltZVpvbmUiOiJFdXJvcGUvQmVybGluIiwibmV0d29ya01vZGUiOmZhbHNlLCJhbHRlcm5hdGVWaWV3IjpmYWxzZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJheWVybndlbGxlIiwicmFkaW9JbWFnZSI6Imh0dHBzOi8vZGIxcXU2c3d5cWY2eC5jbG91ZGZyb250Lm5ldC9hZmZpbGlhdGVzL2J3ZS5zdmciLCJyYWRpb0NvZGUiOiJGUkIiLCJjaGFubmVsSWQiOiI1NjMiLCJuZXR3b3JrSWQiOiI2MCIsImZvcm1hdElkIjoiMSJ9XSwibG9jYWxDb2RlIjoiRlJCIiwiaXNfc2hpZnRfY2hlY2siOmZhbHNlLCJqdGkiOiJmNjk3NGI4NC1iZTc0LTQxZDEtOWRkOS01NDk1MGNiODEwMjMiLCJpYXQiOjE3NzAxODc2MDUsImV4cCI6MTgyMjAyNzYwNX0.HspHp-u3yGdFEQtV6MpbejHwvu5IzxXdPembeewW38aurdnfL_NuFA-C9D2iJu_9JCLlRPc6PqW2Dzd-a_925qUq8vT8QdOe1GzvNbJ4ueDxFvEQs5seIgNgldq9LmoYPIk_RB09-yWqZ36SAHO8ntLn0dAxoCaAZ913-fU8_oQHTKa926I0xgx8AoV1UXhIsUiiJtS-4gqgkHzmwBC3W4f1WRx0q2WNPeTVIQeuJ3W-pK4al-v-wyLIEYgXe4bBFczXwJgSso6n_TanndVJ0WVZyIhqg_YJCo8sW6oBPjxafkNZd64W6AJpfBH4csvaIOkuoLC0Cc7-H4jcxvHIa5d8kbjl3UE0vxt_SFqWSwHFUdTtycxCFUmuvn8-jY-UeZYXYnBCbIbNssBegqwJnqcgiMaft0OyVv5KMziBk1sHDwX78XrHg7fg6PfiXnCCzOEeQH3__WceFHyW3Lx9Yp0Ajw4IcwP3j9MI4Pc5yL9KTJSjJ5-U8X6f-iO_1c-R2dsv2_kH3ENXWwtFwD0TsiVGyT3pCoKi4KmjgWdpDTti95tpetEy313SPVZ12eE0GpKM9DOKduC697ebYGcFs9szs6PxMeheb3saHUNg_95GvNd-n8jDZ-RiH4xxyD0aNghwAzAEL_kFPFT2zIwRS7Sn8r37MsbONJrsX1heoT0';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6Ijc1NWQ4ZmI5LTc3ODAtNGIyYS1hODkwLTY1NTg3YWVlMzY5MSJ9.eyJ1c2VyTGl2ZUlkIjoiYWNjMWRhNTEtOGNkNC00ODM2LWJjMDgtM2NhMGRhOTdjYTlkIiwicm9vbUlEIjoiTUE4LU0xLUFVRCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjo0LCJtaWNGYWRlckxhYmVsIjoiUkMiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1TRy1TVEFHSU5HIiwibmV0d29ya0NvZGUiOiJBVUQiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInJlb3JkZXJGYWRlciI6ZmFsc2UsInRpbWVab25lIjoiQW1lcmljYS9DaGljYWdvIiwibmV0d29ya01vZGUiOmZhbHNlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiOTQuOSBXT0xYIiwicmFkaW9JbWFnZSI6Imh0dHBzOi8vZGIxcXU2c3d5cWY2eC5jbG91ZGZyb250Lm5ldC9hZmZpbGlhdGVzL3dvbHgtZm0tbWFkaXNvbiwtd2kucG5nIiwicmFkaW9Db2RlIjoiTUE4IiwiY2hhbm5lbElkIjoiMTgyMyIsIm5ldHdvcmtJZCI6IjU4IiwiZm9ybWF0SWQiOiIyIn1dLCJsb2NhbENvZGUiOiJNQTgiLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6IjRjNWNkZTY5LTRkNDYtNDQzMi04YzFmLTU5NWVkOWZiM2I1OSIsImlhdCI6MTc3MDI3MzU1NCwiZXhwIjoxNzcwMzU5OTU0fQ.oTheoSaM-AjJ5XsbY4_6PsJh2K2bU0qt_yzBroL8hyFtjP19-uWa5-4akt5MBHgh7Qhc1gFIwoOjMlUhbvNMhKyj7ZckMJkbOAS7Caoo_lbuq7hdyaqpKgxDzx8W42uh6n_w2uacczXCuPmeDSj6GD6r_FRKbQo32a50ER7iZdxa697N1viKE8Q0cbWfwGzxxC_kIQsxLpTeEFBMLN7yvCcTzMBcqMt61jldrqAvfwZsTcjyvOebXDfD0PlmPqIBiZjA_o-sbqrBAPePJA8Y06npvLBPfOALT7i_EPEs5a-DrhWLs0vID6RnQvbI3hK3BTUfrBQRpXQxUy8QIrKOIxS9YHrQ5V-_fdwEuY3i2zT0IH6YapiZUuCWBDH_voH3MrXaZlP9Sn2tjBE28v3B5SAonUNrTSkCbOjxBPO1Agq0n4GInmLKkYxezPlJbu8khgSL9-MvkbC1ZxTMKQaoYcoyUDx3NIcm6c4Zew1fvq-kmHioTyBo1QcfwShX9GHA56gMgKQYrc-2Ym7H4-UwM4Z2FA2hMJUUeOZTdWoPehkJrs99QQJu55DnQWA0FNOU9nBKDuiTQp-VTj8qNjVXbRMi7Ul85OFAso1_NWFENkbmU9h_9_LYBAIcch5OLC3ySN9vXvQadU7s5atbsRF00R9BGgi-46NfxEfrtw8krhw';
 
 
 test.beforeEach(async ({ page }) => {
@@ -111,7 +111,11 @@ await page.waitForTimeout(7000);
 await playerByrole2.click();
 await page.waitForTimeout(700);
 // Press key 2
-  await page.keyboard.press('2');
+  const player2button= page.locator(playerOffButton('2'));
+await expect(player2button).toBeVisible();
+await expect(player2button).toBeEnabled();
+await player2button.click();
+
  
 console.log('---------------------------player 2 started--------------------------');
 
@@ -133,10 +137,13 @@ await page.mouse.up();
 
 console.log('Drag and Drop Content to Player1'); 
 await page.waitForTimeout(7000);  
-await playerByrole.click();
+const player1button= page.locator(playerOffButton('1'));
+await expect(player1button).toBeVisible();
+await expect(player1button).toBeEnabled();
+await player1button.click();
+
 
 // Press key 1
-await page.keyboard.press('1');
 console.log('---------------------------player 1 started--------------------------');
 
 await page.waitForTimeout(16000);
@@ -156,10 +163,11 @@ await page.mouse.up();
 
 console.log('Drag and Drop Content to Player3'); 
 await page.waitForTimeout(7000);
-await playerByrole3.click();
+const player3button= page.locator(playerOffButton('3'));
+await expect(player3button).toBeVisible();
+await expect(player3button).toBeEnabled();
+await player3button.click();
 
-// Press key 3
-await page.keyboard.press('3');
 console.log('---------------------------player 3 started--------------------------');
 
 await page.waitForTimeout(16000);
@@ -172,36 +180,36 @@ test('Link Mode Check', async ({ page }) =>  {
 
   await page.waitForTimeout(5000);
 
-const Content1Linkmode = page.locator(playlistItemByIndex()).nth(12);
+const Content1Linkmode = page.locator(playlistItemByIndex()).nth(4);
 await Content1Linkmode.scrollIntoViewIfNeeded();
 await expect(Content1Linkmode).toBeVisible();
 await expect(Content1Linkmode).toBeEnabled({ timeout: 10000 }); 
 
-const Linkmode1 = page.locator(playlistItemLinkModeIcon()).nth(12);
+const Linkmode1 = page.locator(playlistItemLinkModeIcon()).nth(4);
 await expect(Linkmode1).toBeVisible();
 await expect(Linkmode1).toBeEnabled();
 await Linkmode1.click();
 console.log('Clicked on Linkmode icon of Content1Linkmode');
 await page.waitForTimeout(5000);
 
-const Content2Linkmode = page.locator(playlistItemByIndex()).nth(13);
+const Content2Linkmode = page.locator(playlistItemByIndex()).nth(5);
 await Content2Linkmode.scrollIntoViewIfNeeded();
 await expect(Content2Linkmode).toBeVisible();
 await expect(Content2Linkmode).toBeEnabled({ timeout: 10000 }); 
 
-const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(13);
+const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(5);
 await expect(Linkmode2).toBeVisible();
 await expect(Linkmode2).toBeEnabled();
 await Linkmode2.click();
 console.log('Clicked on Linkmode icon of Content2Linkmode');
 await page.waitForTimeout(5000);
 
-const Content3Linkmode = page.locator(playlistItemByIndex()).nth(14);
+const Content3Linkmode = page.locator(playlistItemByIndex()).nth(6);
 await Content3Linkmode.scrollIntoViewIfNeeded();
 await expect(Content3Linkmode).toBeVisible();
 await expect(Content3Linkmode).toBeEnabled({ timeout: 10000 }); 
 
-const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(14);
+const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(6);
 await expect(Linkmode3).toBeVisible();
 await expect(Linkmode3).toBeEnabled();
 await Linkmode3.click();
