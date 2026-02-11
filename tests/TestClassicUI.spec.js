@@ -9,9 +9,10 @@ import  {
   playerByRole, 
   playlistItemByIndex, 
   settingsButton, 
-  settingsSaveButton}  from './selectors.js';
+  settingsSaveButton,
+datePickerInput }  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjgyYzM0OWJiLTJhNTUtNDE5NC1hMWUyLTk0NzcwYzIzMTNlNCJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiQlJNLUIzLUJSWCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjoiNSIsIm1pY0ZhZGVyTGFiZWwiOiJSQyBURVNUIiwiYml0UmF0ZSI6MjU2MDAwLCJtaWNBbHdheXNPbiI6ZmFsc2UsInNlcnZlckNvZGUiOiJBV1MtU0ctU1RBR0lORyIsIm5ldHdvcmtDb2RlIjoiQlJYIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJhbHRlcm5hdGVWaWV3IjpmYWxzZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJyaWxsdXggUmFkaW8iLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYnJpbGx1eC1yYWRpby5wbmciLCJyYWRpb0NvZGUiOiJCUk0iLCJjaGFubmVsSWQiOiIxNTkzIiwibmV0d29ya0lkIjoiMTE0IiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJCUk0iLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6Ijk2ZTc2MDgzLWE4MmMtNDljYy05OWVlLTc1ZTc5MzI2NDBiZSIsImlhdCI6MTc3MDYzMjEwNiwiZXhwIjoxODIyNDcyMTA2fQ.F-sjhrssMMWBy-ZJ7XYViFVb8oEyI4S57qQNoCSmR6Ql49cTlSkkU6G3UFRENKMeF84xQq-22FR8dzjOreHC_yY_P7I7hKu3wfnlC8S_VAL1dn69ZxaOGeRg5RaAYBMgZqCCQiE3-4E20zBOp0DPXc_7veqa8k-cmYKfcxL2unCTDsZO0GXIHYwgves-j0XiQMyV_OquaAn-cxuTWOYXENH1kUMupHvl8mSozv02-G8h2tAPquUDWSKh-5Iuw5vYw7UhshAEGHchVSG6n-3a67_uikB5zqKCePM3b19zYlODUNg50SOUMQJQupus3IZpBjo-OsahbxC-BB-GfdPU8v7AK107BDLQaQyDz821SpibS1NWb5SWea6Y5hbxJ_Ckm5iiMvLIGgs6yKqp9177KIHT7Fw616GzxfW8EK9xP_fvO2HImeBhlGYbpF7mAa9LJ0anz4umuKjcAhAMlBq63-DTJYZBLax7qXxLfOnm1h5KTWlnb0JboFLO6Kv14VOH9_qtrwSf6MCT5Sdk09NRgg8_Vaqxhi6XExy2qYQZMxWbpQmh8ixq0V4KiTrxvKYCzsG06pQeYzGSM3ub1ZMSed_C73fCfSd49Zj8Dx79MDJPemla-Tsvp96v_ecSRUqOPyt7leNC7x9rXgI8wPYbSvsK6lNRJkDjTuq5vn8j3IY';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjQ0NzgyMzQ2LTRiYzgtNDZiYy1iMzVmLTg5M2UzN2FhMGExMiJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiQlJNLU0xLUJSWCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjoiNSIsIm1pY0ZhZGVyTGFiZWwiOiJSQyBURVNUIiwiYml0UmF0ZSI6MjU2MDAwLCJtaWNBbHdheXNPbiI6ZmFsc2UsInNlcnZlckNvZGUiOiJBV1MtU0ctU1RBR0lORyIsIm5ldHdvcmtDb2RlIjoiQlJYIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJhbHRlcm5hdGVWaWV3IjpmYWxzZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJyaWxsdXggUmFkaW8iLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYnJpbGx1eC1yYWRpby5wbmciLCJyYWRpb0NvZGUiOiJCUk0iLCJjaGFubmVsSWQiOiIxNTkzIiwibmV0d29ya0lkIjoiMTE0IiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJCUk0iLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6ImMyNGZjN2U1LTk4YzUtNDBjOC04NGM4LTdhODhhNmUyNjdkZCIsImlhdCI6MTc3MDcxNzUxNSwiZXhwIjoxODIyNTU3NTE1fQ.NmwFO53GxRyPcHaoQUj3r0gxSymwQTJRApQ6RGHuVZhYWOx0eK_gF-mTYtjs8uro6lHXgKd_xABPUsa3gJUjtk6dXyi7M9zoXJ4KIy0STaZ-OeKwW1MK3JGU-fx1bfW78zpgUHqhLHVshKnDfh7f01ej9_pM0QvzbnGpIVPivLa9bPZCF7gVh7mIaCv6yy-3R_9LQjzZlI-0YkVuDjWtdt_sJiMzEiMVixf0Pz92gKg8AvWt06StXPcdZfGy6pt3JaPoBsBqp_TBUJIHeTuBsAQYU5wmY3qd29fXWMkM380LNOJOWpV31hvfQt4v7_6Npc1jav5ky0leKD99Alp4QybZBtu1AtkBhiUUDYoQAiDWFVT8cCuIT6H05bDqx4g9RGc72dcj1Zu3U-Jzvo7qlDT5JJ1EZm3GPjXpj2_CE3eBlIbzUJKHUcSkhlXrtlhtfuhVWn0HkJjArpiIgUGycmLnL1Pz8Qwb3jykW_wwwsnzAPOIdWvrXYeYhM8ho_3ysNhCX2lBYcqZgxXybrBNz-tW2P5b5ig9IbQvawgJDHXPSbGWQpxfuDpSVLCiZ5EKrz58XDfnLZWllSVaqDvqkeaO2PdLhHY7q9awlxi5uEqJzABnei9Kx36Z9-I20_d4K5mKdljvlM9uCcRd2etVy0f-EB3xUOywZ1RVK4B3thE';
 
 
 test.beforeEach(async ({ page }) => {
@@ -67,14 +68,14 @@ await scrollContainer.click();
 
 await page.waitForTimeout(6000);
 
-const OptionDate =  page.getByRole('option', { name: 'Choose Thursday, February 5th,' });
+const OptionDate =  page.getByRole('option', { name: 'Choose Tuesday, February 10th,' });
 await expect(OptionDate).toBeVisible();
 await expect(OptionDate).toBeEnabled();
 await OptionDate.click();
 
 await page.waitForTimeout(4000);
 
-const OptionHour = page.getByRole('option', { name: '11', exact: true });
+const OptionHour = page.getByRole('option', { name: '13', exact: true });
 await OptionHour.scrollIntoViewIfNeeded();
 await expect(OptionHour).toBeVisible();
 await expect(OptionHour).toBeEnabled();
@@ -84,7 +85,8 @@ await page.waitForTimeout(10000);
 
 const selectedDate = page.locator(datePickerCalendarContainer());
 await expect.soft(selectedDate)
-.toHaveText('Selected date: Thursday, February 5th, 2026 at 11:00 AM');
+.toHaveText('Selected date: Tuesday, February 10th, 2026 at 1:00 PM');
+
 
 
 });
@@ -109,7 +111,7 @@ await page.mouse.up();
 await page.waitForTimeout(7000);  
 // Ensure page has focus before pressing keyboard
 await playerByrole2.click();
-await page.waitForTimeout(700);
+await page.waitForTimeout(1000);
 // Press key 2
   const player2button= page.locator(playerOffButton('2'));
 await expect(player2button).toBeVisible();
@@ -136,7 +138,7 @@ await contentPlayer1.dragTo(playerByrole);
 await page.mouse.up();
 
 console.log('Drag and Drop Content to Player1'); 
-await page.waitForTimeout(7000);  
+await page.waitForTimeout(1000);  
 const player1button= page.locator(playerOffButton('1'));
 await expect(player1button).toBeVisible();
 await expect(player1button).toBeEnabled();

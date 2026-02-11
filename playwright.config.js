@@ -15,6 +15,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 
   
+  
   timeout: 700000, // 7 menit
 
   testDir: './tests',
@@ -38,13 +39,11 @@ export default defineConfig({
   /* Configure projects for major browsers */
   use: {
 
-     viewport: { width: 1366, height: 768 },
-  launchOptions: {
-    args: ['--start-maximized'],
-  },
+  viewport: null,
+  headless: false,
+
      video: 'on',
     screenshot: 'only-on-failure',
-    headless: false,
     trace: 'on-first-retry',
   },
 
