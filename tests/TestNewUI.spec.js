@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, playerElapsedTime}  from './selectors.js';
+import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, InviteDJButton, firstnameInput, OverlayInviteDJ}  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjAzMjUyNGQzLWNkNzQtNDRjYi04M2RhLWYwMjIyMGU3NjYxYSJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiQlJNLU0xLUJSWCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjoiNSIsIm1pY0ZhZGVyTGFiZWwiOiJSQyBURVNUIiwiYml0UmF0ZSI6MjU2MDAwLCJtaWNBbHdheXNPbiI6ZmFsc2UsInNlcnZlckNvZGUiOiJBV1MtU0ctU1RBR0lORyIsIm5ldHdvcmtDb2RlIjoiQlJYIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJhbHRlcm5hdGVWaWV3Ijp0cnVlLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQnJpbGx1eCBSYWRpbyIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9icmlsbHV4LXJhZGlvLnBuZyIsInJhZGlvQ29kZSI6IkJSTSIsImNoYW5uZWxJZCI6IjE1OTMiLCJuZXR3b3JrSWQiOiIxMTQiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkJSTSIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiMDkwOWRiM2EtYjYzZS00NTRhLThiNzMtNjA4NDJmNTY1MjdlIiwiaWF0IjoxNzcwNzc2NTM2LCJleHAiOjE4MjI2MTY1MzZ9.kBmtFLkU3vNh8846tSTP_AjoKOApBj9ehLmNRFAGOq0iWiuuFQ_8oxawRc8gos1ojy9T9iB1HEbEQT3o5DnkOwh1esBhbuhnC4E3Hgthjb9CLwVRgrnld6T-zn0aDT_oJu24_kpCDUjZz_LQE-V7oZ2A-ZpqKeecfPJNGa8QOY0MMdMb0RkBKJRRWP59iFW7_eqCaYCLIkD5h33mUbBCwC71i-YNtltbMBmVSLTWpSWEIuxudJUcAcrB8YtEsavgK2hWFcY9uq7vQ7YClxxc48Y6TnXI3iwKKqJOHVm-zZPX4o9H-qLctj9ZzTUOM7X5p_trbs2S0U4LIF-kJVv1hjbQstYrEgSlxII-HrdUrgQ8dAGkwOS_5UvKEZaePKW--24A-7URFtdg3fiG78yiN1M3B-ECYm-3JT8BZqUeEnVolicc4f8AqA7w_vm9L-nrAiSpoONdZOPTBwZFvcVzCGwqeq0s9l4-9BgUxZhwiMuR6dOp8PqYqWNg2XI5e94N2hMYK4UweLjDOdkkbNq8zKZ68iDbHOQzl6rMkxCC361ZJ15g1Y8SEy4sTYpuyxXCbKNR9_czO9wnDKnLnxltTnhb9PtXTZRWfsbTM9hP4zVSVl-3CrR67mlHXbvCpssXyEokhVWZemHoRnJ7NHveCa1kRWSxCBhzFGjHTEJLzNY';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjNmYWQ1NzVlLWQzNDItNDMyNS1hMWNiLWJlOTcxN2NkMjRlNCJ9.eyJyb29tSUQiOiJCUk0tQjEtQlJYIiwiY2FuS2lja1VzZXIiOmZhbHNlLCJtaWNGYWRlcklkIjo2LCJtaWNGYWRlckxhYmVsIjoiUkIiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1TRy1TVEFHSU5HIiwibmV0d29ya0NvZGUiOiJCUlgiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInRpbWVab25lIjoiRXVyb3BlL0JlcmxpbiIsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCcmlsbHV4IFJhZGlvIiwicmFkaW9JbWFnZSI6Imh0dHBzOi8vZGIxcXU2c3d5cWY2eC5jbG91ZGZyb250Lm5ldC9hZmZpbGlhdGVzL2JyaWxsdXgtcmFkaW8ucG5nIiwicmFkaW9Db2RlIjoiQlJNIiwiY2hhbm5lbElkIjoiMTU5MyIsIm5ldHdvcmtJZCI6IjExNCIsImZvcm1hdElkIjoiMSJ9XSwibG9jYWxDb2RlIjoiQlJNIiwiaXNfc2hpZnRfY2hlY2siOmZhbHNlLCJqdGkiOiIzOTRhZDliMi1lMGQ1LTQyNTQtOGM1YS03MTg3MDNlY2E2NDUiLCJpYXQiOjE3NTg1MzAzNDEsImV4cCI6MTgxMDM3MDM0MX0.mronKsJi0qo3Ua2_c_eMDQkJZFialOiUhcRiLjd509HD9PpNkV9xA8sdPIAYApxpihwqpFON_SGEEqrt7zfFAXSrdcLOQn7cajq5rQ7r-tKf9cqyaJ3OB56t_V_vquLGAH5xVmWv2VMWgCVRq99aEYnh-XW1B_dnXy2it-q8KDf9Ydmv14eWFCeJhzFAK-ki1FimpYQjL2pqOYHW4GSw9ecI28JkZPpgEUPeEAIj5FzVB9BomnaQ_frFJokSKgOsER_PvJh-V8EmkfyMttTHbzSa9vR4RVlZgn6z1SHcxzx681jZl61yEtZjsfmWf7JPJVo2Mea8PRaM8WxC7fjra6Uqb9ZcYjedy2u95ZxOlgVgvSw1fzzFJUlnzQmT63oXMrDUZNKCv5_QXNW8vZ5p2rnhGQGAtavTNHhNlbNuGCzd0rSh5kcDkbzQpUK4vO3AbLCPR0qMC5ohQT28LtW9N8agHe3S2IkMc-rFBuk16_XESiwziIRnXs0_ArbHayUcew73xYo3ipBRIlfX6hepfiFpb9G01HyPAIxRxHM0zoH7gNwfnxiL7T1pDJPuB8nwyXx-l2qWg14_9KZZ5g00tUpid4rsG_4-D2MF7vzE61ZgmrAuyFL378Ft0h5ZrGqnbbd5YrkQMcpWtIWcPLYx1e_fBiYRPlaEfSEEdIeQ76g';
 
 test.beforeEach(async ({ page }) => {
 
@@ -166,36 +166,36 @@ await page.waitForTimeout(16000);
 
 test('Link Mode Check', async ({ page }) =>  {
 
-const Content1Linkmode = page.locator(playlistItemByIndex()).nth(6);
+const Content1Linkmode = page.locator(playlistItemByIndex()).nth(2);
 await Content1Linkmode.scrollIntoViewIfNeeded();
 await expect.soft(Content1Linkmode).toBeVisible();
 await expect.soft(Content1Linkmode).toBeEnabled(); 
 
-const Linkmode1 = page.locator(playlistItemLinkModeIcon()).nth(6);
+const Linkmode1 = page.locator(playlistItemLinkModeIcon()).nth(2);
 await expect(Linkmode1).toBeVisible();
 await expect(Linkmode1).toBeEnabled();
 await Linkmode1.click();
 console.log('Clicked on Linkmode icon of Content1Linkmode');
 await page.waitForTimeout(5000);
 
-const Content2Linkmode = page.locator(playlistItemByIndex()).nth(7);
+const Content2Linkmode = page.locator(playlistItemByIndex()).nth(3);
 await Content2Linkmode.scrollIntoViewIfNeeded();
 await expect.soft(Content2Linkmode).toBeVisible();
 await expect.soft(Content2Linkmode).toBeEnabled(); 
 
-const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(7);
+const Linkmode2 = page.locator(playlistItemLinkModeIcon()).nth(3);
 await expect(Linkmode2).toBeVisible();
 await expect(Linkmode2).toBeEnabled();
 await Linkmode2.click();
 console.log('Clicked on Linkmode icon of Content2Linkmode');
 await page.waitForTimeout(5000);
 
-const Content3Linkmode = page.locator(playlistItemByIndex()).nth(8);
+const Content3Linkmode = page.locator(playlistItemByIndex()).nth(4);
 await Content3Linkmode.scrollIntoViewIfNeeded();
 await expect.soft(Content3Linkmode).toBeVisible();
 await expect.soft(Content3Linkmode).toBeEnabled();
 
-const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(8);
+const Linkmode3 = page.locator(playlistItemLinkModeIcon()).nth(4);
 await expect(Linkmode3).toBeVisible();
 await expect(Linkmode3).toBeEnabled();
 await Linkmode3.click();
@@ -211,14 +211,38 @@ await page.mouse.up();
 
 
 console.log('Drag and Drop Linkmode Content to Player1');
+await page.waitForTimeout(10000);
 await player1linkmode.click();
-await page.waitForTimeout(7000);
-await page.keyboard.press('1');
+await page.keyboard.press('Digit 1');
 console.log('---------------------------player 1 link mode started--------------------------');
 
 
 await page.waitForTimeout(420000);
 
 });
+
+test('Invite DJ', async ({ page }) =>  {
+
+  const inviteDJ1 = page.getByRole('button').filter({ hasText: /^$/ }).nth(2);
+  await expect.soft(inviteDJ1).toBeVisible();
+  await expect(inviteDJ1).toBeEnabled();
+  await inviteDJ1.click();
+
+  const overlayInviteDJ = page.locator(OverlayInviteDJ());
+  await expect.soft(overlayInviteDJ).toBeVisible();
+  await expect.soft(overlayInviteDJ).toBeEnabled();
+
+  const firstName = page.locator(firstnameInput());
+  await expect(firstName).toBeVisible();
+  await expect(firstName).toBeEnabled();
+  await firstName.click();
+  await firstName.fill('AutoTest');
+
+
+  await page.waitForTimeout(3000);
+
+});
+
+
 
 

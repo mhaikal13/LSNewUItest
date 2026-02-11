@@ -327,6 +327,39 @@ export const dialogCancelButton = () => {
   return `.swal2-cancel`;
 };
 
+
+export const InviteDJButton = async ({ page }) => {
+  //invite DJ button
+  return 'role=button >> nth=2';
+}
+
+export const OverlayInviteDJ = async ({ page }) => {
+  // Overlay for Invite DJ
+  return '.swal2-container';
+}
+
+export const firstnameInput = async ({ page }) => {
+  // First name input field
+  return 'input[placeholder="First Name"]';
+}
+
+
+//await page.getByRole('button').filter({ hasText: /^$/ }).nth(2).click();
+// getByText('Invite New UserFirst NameLast')
+
+// await page.getByRole('textbox').nth(3).click();
+// await page.getByRole('textbox').nth(4).click();
+// getByRole('combobox').first()
+// await page.getByRole('textbox', { name: 'user@mail.com' }).click();
+// getByRole('combobox').nth(1)
+
+// await page.getByPlaceholder('( In Minutes )').click();
+// getByRole('button', { name: 'Invite' })
+
+// await page.getByRole('button', { name: 'Invite' }).click();
+// locator('div').filter({ hasText: 'SuccessInvitation has been' }).nth(3)
+
+
 // ============================================================================
 // Helper: Build a locator with context
 // ============================================================================
