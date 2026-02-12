@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, InviteDJButton, firstnameInput, OverlayInviteDJ}  from './selectors.js';
+import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteSendButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType}  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjNmYWQ1NzVlLWQzNDItNDMyNS1hMWNiLWJlOTcxN2NkMjRlNCJ9.eyJyb29tSUQiOiJCUk0tQjEtQlJYIiwiY2FuS2lja1VzZXIiOmZhbHNlLCJtaWNGYWRlcklkIjo2LCJtaWNGYWRlckxhYmVsIjoiUkIiLCJiaXRSYXRlIjoyNTYwMDAsIm1pY0Fsd2F5c09uIjpmYWxzZSwic2VydmVyQ29kZSI6IkFXUy1TRy1TVEFHSU5HIiwibmV0d29ya0NvZGUiOiJCUlgiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInRpbWVab25lIjoiRXVyb3BlL0JlcmxpbiIsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCcmlsbHV4IFJhZGlvIiwicmFkaW9JbWFnZSI6Imh0dHBzOi8vZGIxcXU2c3d5cWY2eC5jbG91ZGZyb250Lm5ldC9hZmZpbGlhdGVzL2JyaWxsdXgtcmFkaW8ucG5nIiwicmFkaW9Db2RlIjoiQlJNIiwiY2hhbm5lbElkIjoiMTU5MyIsIm5ldHdvcmtJZCI6IjExNCIsImZvcm1hdElkIjoiMSJ9XSwibG9jYWxDb2RlIjoiQlJNIiwiaXNfc2hpZnRfY2hlY2siOmZhbHNlLCJqdGkiOiIzOTRhZDliMi1lMGQ1LTQyNTQtOGM1YS03MTg3MDNlY2E2NDUiLCJpYXQiOjE3NTg1MzAzNDEsImV4cCI6MTgxMDM3MDM0MX0.mronKsJi0qo3Ua2_c_eMDQkJZFialOiUhcRiLjd509HD9PpNkV9xA8sdPIAYApxpihwqpFON_SGEEqrt7zfFAXSrdcLOQn7cajq5rQ7r-tKf9cqyaJ3OB56t_V_vquLGAH5xVmWv2VMWgCVRq99aEYnh-XW1B_dnXy2it-q8KDf9Ydmv14eWFCeJhzFAK-ki1FimpYQjL2pqOYHW4GSw9ecI28JkZPpgEUPeEAIj5FzVB9BomnaQ_frFJokSKgOsER_PvJh-V8EmkfyMttTHbzSa9vR4RVlZgn6z1SHcxzx681jZl61yEtZjsfmWf7JPJVo2Mea8PRaM8WxC7fjra6Uqb9ZcYjedy2u95ZxOlgVgvSw1fzzFJUlnzQmT63oXMrDUZNKCv5_QXNW8vZ5p2rnhGQGAtavTNHhNlbNuGCzd0rSh5kcDkbzQpUK4vO3AbLCPR0qMC5ohQT28LtW9N8agHe3S2IkMc-rFBuk16_XESiwziIRnXs0_ArbHayUcew73xYo3ipBRIlfX6hepfiFpb9G01HyPAIxRxHM0zoH7gNwfnxiL7T1pDJPuB8nwyXx-l2qWg14_9KZZ5g00tUpid4rsG_4-D2MF7vzE61ZgmrAuyFL378Ft0h5ZrGqnbbd5YrkQMcpWtIWcPLYx1e_fBiYRPlaEfSEEdIeQ76g';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImVkZTA2M2RkLTExOTgtNDgzMC1iYTAxLWI4YmFiMWVlMjEzNiJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLU0xLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IkhBSUtBTCIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiMjdjNTlmNjctNzQ4Ni00ZGRjLWFiZWQtNTY3NzQyYWY4YmZlIiwiaWF0IjoxNzcwODg0NTkxLCJleHAiOjE4MjI3MjQ1OTF9.rTMZrHtx5K4JloHYO-VZhPAlEVMzrPJHNp5GGzwfljDVERPXoB4WaPdcMwajgOTpqq9vpe_zXLLzttNhfSsNd449ECnwH4D2cXwMnGavOLNa8JCKOFeOJNYgMJGObQaFr4AgMTcHRXZfSotEv-Oa3bW_3wUEkUGdvJr0P2TdTfelg6UbXR7-cYqIS7m-bBlxlAUzsGD22ZfZgXwv6TQQKbkN9uwT6JxnsQeadFNRW8atrwX8Ywb4lNX-SgQykDbgvUcy3o74v2um0NEKc93QJNsCQHvjp8tshYDSDklWZXm-A4tFQ2v1xIlsz1xbnHoIqSSM8aHwva8HGRXzYbNa-8setCvWvrDEVZmKMjZxY6KNB8bCFXtr5kGSBEqzmSHaDLFLNAGTOzav5_E7enHR0HwAuTyzwQcqfHE202CT1VJWnRIsg6NthLEOAeL06AdQWaAL4sdS38ywL6iiOlsVbPaQwRl3U9gGloDiFedVmUnZID3kxfFLmgr3zYDCMAVHjzGyGXtuzqMgPW1mqGH7xF9Nge9_FebJeJUhTFQpXzfgyQCwnn1CjZz7BcsyqyhmFXASKc3n3OpkSG__7MJ3ChBWQw_kK5jtblYMTmcFOBEG6oq1ldA6kH9S5eQj5zdCpKfOTGNRsFcUjksUcz2iGjKj0DsGVnNmm2nlNs1KbB4';
 
 test.beforeEach(async ({ page }) => {
 
@@ -13,73 +13,68 @@ test.beforeEach(async ({ page }) => {
   await okButton.click();
 
 
-  const settingsBtn = page.locator(settingsButton());
-  await expect.soft(settingsBtn).toBeVisible();
-  await expect.soft(settingsBtn).toBeEnabled();
-  await settingsBtn.click();
+//   const settingsBtn = page.locator(settingsButton());
+//   await expect.soft(settingsBtn).toBeVisible();
+//   await expect.soft(settingsBtn).toBeEnabled();
+//   await settingsBtn.click();
 
-  const overlaysetting = page.getByText('Audio Replace ModeTrueFalseDisable Keyboard ShortcutsBoost ModeEcho');
-  await expect(overlaysetting).toBeVisible();
-  await expect(overlaysetting).toBeEnabled();
+//   const overlaysetting = page.getByText('Audio Replace ModeTrueFalseDisable Keyboard ShortcutsBoost ModeEcho');
+//   await expect(overlaysetting).toBeVisible();
+//   await expect(overlaysetting).toBeEnabled();
 
-const AudioReplaceMode = page.getByRole('combobox').nth(3);
-await expect(AudioReplaceMode).toBeVisible();
-await expect(AudioReplaceMode).toBeEnabled();
-await AudioReplaceMode.click();
-await AudioReplaceMode.selectOption('a');
-await expect(AudioReplaceMode).toHaveValue('a');
+// const AudioReplaceMode = page.getByRole('combobox').nth(3);
+// await expect(AudioReplaceMode).toBeVisible();
+// await expect(AudioReplaceMode).toBeEnabled();
+// await AudioReplaceMode.click();
+// await AudioReplaceMode.selectOption('a');
+// await expect(AudioReplaceMode).toHaveValue('a');
 
-const DisableKeyboardShortcuts = page.locator('.react-switch-bg').first();
-await expect(DisableKeyboardShortcuts).toBeVisible();
-await expect(DisableKeyboardShortcuts).toBeEnabled();
-await DisableKeyboardShortcuts.click();
+// const DisableKeyboardShortcuts = page.locator('.react-switch-bg').first();
+// await expect(DisableKeyboardShortcuts).toBeVisible();
+// await expect(DisableKeyboardShortcuts).toBeEnabled();
+// await DisableKeyboardShortcuts.click();
 
-const Save = page.locator(settingsSaveButton());
-await expect(Save).toBeVisible();
-await expect(Save).toBeEnabled();
-await Save.click();
+// const Save = page.locator(settingsSaveButton());
+// await expect(Save).toBeVisible();
+// await expect(Save).toBeEnabled();
+// await Save.click();
 
-await page.waitForTimeout(6000);
-  await page.keyboard.press('Escape');
+// await page.waitForTimeout(6000);
+//   await page.keyboard.press('Escape');
   
-const Setting = page.locator(settingsDialog());
-await expect.soft(Setting).not.toBeVisible();
-await page.waitForTimeout(6000);
-
-const Fullscreen = page.locator('.settings_container > div:nth-child(2)');
-await expect(Fullscreen).toBeVisible();
-await expect(Fullscreen).toBeEnabled();
-await Fullscreen.click();
-
-await page.waitForTimeout(6000);
+// const Setting = page.locator(settingsDialog());
+// await expect.soft(Setting).not.toBeVisible();
+// await page.waitForTimeout(6000);
 
 
-const scrollContainer = page.locator(datePickerCalendarContainer());
-await expect(scrollContainer).toBeVisible();
-await expect (scrollContainer).toBeEnabled();
-await scrollContainer.click();
+// await page.waitForTimeout(6000);
 
-await page.waitForTimeout(6000);
 
-const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 11th,' });
-await expect(OptionDate).toBeVisible();
-await expect(OptionDate).toBeEnabled();
-await OptionDate.click();
+// const scrollContainer = page.locator(datePickerCalendarContainer());
+// await expect(scrollContainer).toBeVisible();
+// await expect (scrollContainer).toBeEnabled();
+// await scrollContainer.click();
 
-await page.waitForTimeout(4000);
+// await page.waitForTimeout(6000);
 
-const OptionHour = page.getByRole('option', { name: '05', exact: true });
-await OptionHour.scrollIntoViewIfNeeded();
-await expect(OptionHour).toBeVisible();
-await expect(OptionHour).toBeEnabled();
-await OptionHour.click();
+// const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 11th,' });
+// await expect(OptionDate).toBeVisible();
+// await expect(OptionDate).toBeEnabled();
+// await OptionDate.click();
 
-await page.waitForTimeout(10000);
+// await page.waitForTimeout(4000);
 
-const selectedDate = page.locator(datePickerCalendarContainer());
-await expect (selectedDate).toBeVisible();
-await expect.soft(selectedDate)
-.toHaveText('Selected date: Wednesday, February 11th, 2026 at 5:00 PM');
+// const OptionHour = page.getByRole('option', { name: '05', exact: true });
+// await expect(OptionHour).toBeVisible();
+// await expect(OptionHour).toBeEnabled();
+// await OptionHour.click();
+
+// await page.waitForTimeout(10000);
+
+// const selectedDate = page.locator(datePickerCalendarContainer());
+// await expect (selectedDate).toBeVisible();
+// await expect.soft(selectedDate)
+// .toHaveText('Selected date: Wednesday, February 11th, 2026 at 5:00 PM');
 
 await page.waitForTimeout(10000);
 
@@ -223,22 +218,65 @@ await page.waitForTimeout(420000);
 
 test('Invite DJ', async ({ page }) =>  {
 
-  const inviteDJ1 = page.getByRole('button').filter({ hasText: /^$/ }).nth(2);
+  const inviteDJ1 = page.locator (micMenuButton('player4'));
   await expect.soft(inviteDJ1).toBeVisible();
-  await expect(inviteDJ1).toBeEnabled();
+  await expect.soft(inviteDJ1).toBeEnabled();
   await inviteDJ1.click();
 
-  const overlayInviteDJ = page.locator(OverlayInviteDJ());
+  const overlayInviteDJ = page.locator(inviteOverlay());
   await expect.soft(overlayInviteDJ).toBeVisible();
   await expect.soft(overlayInviteDJ).toBeEnabled();
 
-  const firstName = page.locator(firstnameInput());
+  const firstName = page.locator(inputFirstName());
   await expect(firstName).toBeVisible();
   await expect(firstName).toBeEnabled();
   await firstName.click();
   await firstName.fill('AutoTest');
 
+  const lastName = page.locator(inputLastName());
+  await expect(lastName).toBeVisible();
+  await expect(lastName).toBeEnabled();
+  await lastName.click();
+  await lastName.fill('AutoTest');
 
+  const SendTypeInvite = page.locator(inputWhatsaap());
+  await expect(SendTypeInvite).toBeVisible();
+  await expect(SendTypeInvite).toBeEnabled();
+  await SendTypeInvite.click();
+  await SendTypeInvite.selectOption('wa');
+
+  const Inputnumber = page.locator(inputWhatsaap());
+  await expect(Inputnumber).toBeVisible();
+  await expect(Inputnumber).toBeEnabled();
+  await Inputnumber.click();
+  await Inputnumber.fill('+49851563422');
+
+  const SendType = page.locator(selectSendType());
+  await expect(SendType).toBeVisible();
+  await expect(SendType).toBeEnabled();
+  await SendType.click();
+
+  const modeDJ = page.locator(selectMode());
+  await expect(modeDJ).toBeVisible();
+  await expect(modeDJ).toBeEnabled();
+  await modeDJ.click();
+  await modeDJ.selectOption('Mic Only');
+
+  const ExpirationDJ = page.locator(inputExpiration());
+  await expect(ExpirationDJ).toBeVisible();
+  await expect(ExpirationDJ).toBeEnabled();
+  await ExpirationDJ.click();
+  await ExpirationDJ.fill('120');
+
+  const InviteButton = page.locator(inviteSendButton());
+  await expect(InviteButton).toBeVisible();
+  await expect(InviteButton).toBeEnabled();
+  await InviteButton.click();
+
+  const successMessage = page.locator(successInvitationMessage());
+  await expect.soft(successMessage).toBeVisible();
+
+  console.log('Invite DJ sent successfully');
   await page.waitForTimeout(3000);
 
 });

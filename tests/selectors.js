@@ -328,36 +328,80 @@ export const dialogCancelButton = () => {
 };
 
 
-export const InviteDJButton = async ({ page }) => {
-  //invite DJ button
-  return 'role=button >> nth=2';
-}
+// ============================================================================
+// Invite DJ
+// ============================================================================
 
-export const OverlayInviteDJ = async ({ page }) => {
-  // Overlay for Invite DJ
-  return '.swal2-container';
-}
-
-export const firstnameInput = async ({ page }) => {
-  // First name input field
-  return 'input[placeholder="First Name"]';
-}
+export const micMenuButton = (playerName) => {
 
 
-//await page.getByRole('button').filter({ hasText: /^$/ }).nth(2).click();
-// getByText('Invite New UserFirst NameLast')
+  return `[role="${playerName}"] button.szh-menu-button`;
+};
 
-// await page.getByRole('textbox').nth(3).click();
-// await page.getByRole('textbox').nth(4).click();
-// getByRole('combobox').first()
-// await page.getByRole('textbox', { name: 'user@mail.com' }).click();
-// getByRole('combobox').nth(1)
 
-// await page.getByPlaceholder('( In Minutes )').click();
-// getByRole('button', { name: 'Invite' })
+export const inviteOverlay = () => {
+  // Invite DJ dialog wrapper
+  return `div.setting-dlg:has(h4:has-text("Invite New User"))`;
+};
 
-// await page.getByRole('button', { name: 'Invite' }).click();
-// locator('div').filter({ hasText: 'SuccessInvitation has been' }).nth(3)
+
+export const inputFirstName = () => {
+  // First Name input field in Invite DJ dialog
+  return `form label:has-text("First Name") + input`;
+};
+
+export const inputLastName = () => {
+  // Last Name input field in Invite DJ dialog
+  return `form label:has-text("Last Name") + input`;
+};
+
+export const selectSendType = () => {
+  //Dropdown sendType
+  return `form label:has-text("Send Type") + select`;
+};
+
+export const inputMail = () => {
+  // Mail input field in Invite DJ dialog
+  return `form label:has-text("Mail") + input`;
+};
+
+export const inputWhatsaap = () => {
+// Whatsaap input field in Invite DJ dialog
+  return `form label:has-text("Whatsaap") + input`;
+};
+
+export const inputPhoneNumber = () => {
+  // Phone Number input field in Invite DJ dialog
+  return `form label:has-text("SMS") + input`;
+};
+
+export const selectMode = () => {
+  // Mode select dropdown in Invite DJ dialog
+  return `form label:has-text("") + select`;
+};
+
+export const inputExpiration = () => {
+  // Expiration input field in Invite DJ dialog
+  return `form label:has-text("Expiration") + input`;
+};
+
+export const inviteButton = () => {
+  // "Invite" button in the Invite DJ dialog
+  return `div.setting-dlg .invite-btns button`;
+};
+
+export const inviteCloseButton = () => {
+  // Close button (X) in settings dialog
+  return `div.setting-dlg svg[aria-label="close"]`;
+};
+
+export const successInvitationMessage = async () => {
+  // Success invitation message locator
+  return 'div.has-text("Invitation has been sent successfully")';
+};
+//locator('div').filter({ hasText: 'SuccessInvitation has been' }).nth(3)
+
+
 
 
 // ============================================================================
