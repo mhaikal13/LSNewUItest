@@ -367,7 +367,7 @@ export const inputMail = () => {
 
 export const inputWhatsaap = () => {
 // Whatsaap input field in Invite DJ dialog
-  return `form label:has-text("Whatsaap") + input`;
+  return `div.setting-dlg form div:nth-child(4) input`;
 };
 
 export const inputPhoneNumber = () => {
@@ -377,7 +377,7 @@ export const inputPhoneNumber = () => {
 
 export const selectMode = () => {
   // Mode select dropdown in Invite DJ dialog
-  return `form label:has-text("") + select`;
+  return `form label:has-text("Mode") + select`;
 };
 
 export const inputExpiration = () => {
@@ -387,7 +387,7 @@ export const inputExpiration = () => {
 
 export const inviteButton = () => {
   // "Invite" button in the Invite DJ dialog
-  return `div.setting-dlg .invite-btns button`;
+  return `.setting-dlg .invite-btns button`;
 };
 
 export const inviteCloseButton = () => {
