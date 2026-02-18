@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteSendButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType}  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImVkZTA2M2RkLTExOTgtNDgzMC1iYTAxLWI4YmFiMWVlMjEzNiJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLU0xLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NiwibWljRmFkZXJMYWJlbCI6IkhBSUtBTCIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiMjdjNTlmNjctNzQ4Ni00ZGRjLWFiZWQtNTY3NzQyYWY4YmZlIiwiaWF0IjoxNzcwODg0NTkxLCJleHAiOjE4MjI3MjQ1OTF9.rTMZrHtx5K4JloHYO-VZhPAlEVMzrPJHNp5GGzwfljDVERPXoB4WaPdcMwajgOTpqq9vpe_zXLLzttNhfSsNd449ECnwH4D2cXwMnGavOLNa8JCKOFeOJNYgMJGObQaFr4AgMTcHRXZfSotEv-Oa3bW_3wUEkUGdvJr0P2TdTfelg6UbXR7-cYqIS7m-bBlxlAUzsGD22ZfZgXwv6TQQKbkN9uwT6JxnsQeadFNRW8atrwX8Ywb4lNX-SgQykDbgvUcy3o74v2um0NEKc93QJNsCQHvjp8tshYDSDklWZXm-A4tFQ2v1xIlsz1xbnHoIqSSM8aHwva8HGRXzYbNa-8setCvWvrDEVZmKMjZxY6KNB8bCFXtr5kGSBEqzmSHaDLFLNAGTOzav5_E7enHR0HwAuTyzwQcqfHE202CT1VJWnRIsg6NthLEOAeL06AdQWaAL4sdS38ywL6iiOlsVbPaQwRl3U9gGloDiFedVmUnZID3kxfFLmgr3zYDCMAVHjzGyGXtuzqMgPW1mqGH7xF9Nge9_FebJeJUhTFQpXzfgyQCwnn1CjZz7BcsyqyhmFXASKc3n3OpkSG__7MJ3ChBWQw_kK5jtblYMTmcFOBEG6oq1ldA6kH9S5eQj5zdCpKfOTGNRsFcUjksUcz2iGjKj0DsGVnNmm2nlNs1KbB4';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjFjMzZmMWVhLTdjMGMtNGYyMC1iZmM3LWU0OWRjNmZlY2U1OSJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NSwibWljRmFkZXJMYWJlbCI6IkFMVEVSTkFURSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiODk0NjNlMDItZmRjNS00ZWMxLThhZDEtN2RkY2Q1ODZiZTk4IiwiaWF0IjoxNzcwOTczMDU2LCJleHAiOjE4MjI4MTMwNTZ9.mupUvUFnVjuIWEl9tZhwF1DR0mO_9H3N7IlpfXhMWvmHMFfZ_SfYKOUL_xmBEu68maM8K54Q1lwnV2t5HcR2JUCEDCRAzajf0YQdjjgDluQAKXob-O3nqIjvm2ujCEt82zLd-x4IkzyZJRvdhzrnQ7evgxT-ClqbyHM3SNYOZ0Bhu_Qw0LHqjLbkajr3GQtgt-M2MILK937g1cR70rqqxlf49Q-NFA5Xkp5lCbdCdzFb0XK5dPG-DSxfvslU2t_Xv6InqEydgBEP_MU_ZjCTIk9uyLMAfD1KOlWCSeINxK998U_7k33j54G-mA2XyhxfCEdY5-UyBU2flqrm2IGADaay9BN9K_klmuiJCq2883Isfm9h5Pm-o51SN8SmmOXS9kmis4-IMJYqaKgpa2z5CwpCHb67jUtNIpGbuEyUK5f_Eu-ymDlwj23HonnNA8AAaztpRNCbgLFhzjlGo5vDNCWz-bsIKjKH9baGYYkynbVtxabUTIXOUii4_7HNklm2gWrA7lFg-y-5vPOul-TkySCR_Q1L_7F5t6NlW19bJ0UIm05-MdyJIb8Yatpo6lqdNOR6fKQEkL2AhmyuH40z1dxkfdPjg6WxSBLdYJ920Tba1GuLU9BEA8Zsp8qQ4QnlJ18iRhH3Wrz5OIHs3ubkSNLGk81PJPV-_nDZde0ZE-c';
 
 test.beforeEach(async ({ page }) => {
 
@@ -13,68 +13,75 @@ test.beforeEach(async ({ page }) => {
   await okButton.click();
 
 
-//   const settingsBtn = page.locator(settingsButton());
-//   await expect.soft(settingsBtn).toBeVisible();
-//   await expect.soft(settingsBtn).toBeEnabled();
-//   await settingsBtn.click();
+  const settingsBtn = page.locator(settingsButton());
+  await expect.soft(settingsBtn).toBeVisible();
+  await expect.soft(settingsBtn).toBeEnabled();
+  await settingsBtn.click();
 
-//   const overlaysetting = page.getByText('Audio Replace ModeTrueFalseDisable Keyboard ShortcutsBoost ModeEcho');
-//   await expect(overlaysetting).toBeVisible();
-//   await expect(overlaysetting).toBeEnabled();
+  const overlaysetting = page.getByText('Audio Replace ModeTrueFalseDisable Keyboard ShortcutsBoost ModeEcho');
+  await expect(overlaysetting).toBeVisible();
+  await expect(overlaysetting).toBeEnabled();
 
-// const AudioReplaceMode = page.getByRole('combobox').nth(3);
-// await expect(AudioReplaceMode).toBeVisible();
-// await expect(AudioReplaceMode).toBeEnabled();
-// await AudioReplaceMode.click();
-// await AudioReplaceMode.selectOption('a');
-// await expect(AudioReplaceMode).toHaveValue('a');
+const AudioReplaceMode = page.getByRole('combobox').nth(3);
+await expect(AudioReplaceMode).toBeVisible();
+await expect(AudioReplaceMode).toBeEnabled();
+await AudioReplaceMode.click();
+await AudioReplaceMode.selectOption('a');
+await expect(AudioReplaceMode).toHaveValue('a');
 
-// const DisableKeyboardShortcuts = page.locator('.react-switch-bg').first();
-// await expect(DisableKeyboardShortcuts).toBeVisible();
-// await expect(DisableKeyboardShortcuts).toBeEnabled();
-// await DisableKeyboardShortcuts.click();
+const DisableKeyboardShortcuts = page.locator('.react-switch-bg').first();
+await expect(DisableKeyboardShortcuts).toBeVisible();
+await expect(DisableKeyboardShortcuts).toBeEnabled();
+await DisableKeyboardShortcuts.click();
 
-// const Save = page.locator(settingsSaveButton());
-// await expect(Save).toBeVisible();
-// await expect(Save).toBeEnabled();
-// await Save.click();
+const Save = page.locator(settingsSaveButton());
+await expect(Save).toBeVisible();
+await expect(Save).toBeEnabled();
+await Save.click();
 
-// await page.waitForTimeout(6000);
-//   await page.keyboard.press('Escape');
+await page.waitForTimeout(6000);
+  await page.keyboard.press('Escape');
   
-// const Setting = page.locator(settingsDialog());
-// await expect.soft(Setting).not.toBeVisible();
-// await page.waitForTimeout(6000);
+const Setting = page.locator(settingsDialog());
+await expect.soft(Setting).not.toBeVisible();
+await page.waitForTimeout(6000);
 
 
-// await page.waitForTimeout(6000);
+await page.waitForTimeout(6000);
 
 
-// const scrollContainer = page.locator(datePickerCalendarContainer());
-// await expect(scrollContainer).toBeVisible();
-// await expect (scrollContainer).toBeEnabled();
-// await scrollContainer.click();
+const scrollContainer = page.locator(datePickerCalendarContainer());
+await expect(scrollContainer).toBeVisible();
+await expect (scrollContainer).toBeEnabled();
+await scrollContainer.click();
 
-// await page.waitForTimeout(6000);
+await page.waitForTimeout(6000);
 
-// const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 11th,' });
-// await expect(OptionDate).toBeVisible();
-// await expect(OptionDate).toBeEnabled();
-// await OptionDate.click();
+const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 11th,' });
+await expect(OptionDate).toBeVisible();
+await expect(OptionDate).toBeEnabled();
+await OptionDate.click();
 
-// await page.waitForTimeout(4000);
+await page.waitForTimeout(4000);
 
-// const OptionHour = page.getByRole('option', { name: '05', exact: true });
-// await expect(OptionHour).toBeVisible();
-// await expect(OptionHour).toBeEnabled();
-// await OptionHour.click();
+const scrollContainer2 = page.locator(datePickerCalendarContainer());
+await expect(scrollContainer2).toBeVisible();
+await expect (scrollContainer2).toBeEnabled();
+await scrollContainer2.click();
 
-// await page.waitForTimeout(10000);
+await page.waitForTimeout(6000);
 
-// const selectedDate = page.locator(datePickerCalendarContainer());
-// await expect (selectedDate).toBeVisible();
-// await expect.soft(selectedDate)
-// .toHaveText('Selected date: Wednesday, February 11th, 2026 at 5:00 PM');
+const OptionHour = page.getByRole('option', { name: '05', exact: true });
+await expect(OptionHour).toBeVisible();
+await expect(OptionHour).toBeEnabled();
+await OptionHour.click();
+
+await page.waitForTimeout(10000);
+
+const selectedDate = page.locator(datePickerCalendarContainer());
+await expect (selectedDate).toBeVisible();
+await expect.soft(selectedDate)
+.toHaveText('Selected date: Wednesday, February 11th, 2026 at 5:00 PM');
 
 await page.waitForTimeout(10000);
 
@@ -208,7 +215,7 @@ await page.mouse.up();
 console.log('Drag and Drop Linkmode Content to Player1');
 await page.waitForTimeout(10000);
 await player1linkmode.click();
-await page.keyboard.press('Digit 1');
+await page.keyboard.press('1');
 console.log('---------------------------player 1 link mode started--------------------------');
 
 
