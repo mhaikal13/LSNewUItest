@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType}  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjFjMzZmMWVhLTdjMGMtNGYyMC1iZmM3LWU0OWRjNmZlY2U1OSJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NSwibWljRmFkZXJMYWJlbCI6IkFMVEVSTkFURSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiODk0NjNlMDItZmRjNS00ZWMxLThhZDEtN2RkY2Q1ODZiZTk4IiwiaWF0IjoxNzcwOTczMDU2LCJleHAiOjE4MjI4MTMwNTZ9.mupUvUFnVjuIWEl9tZhwF1DR0mO_9H3N7IlpfXhMWvmHMFfZ_SfYKOUL_xmBEu68maM8K54Q1lwnV2t5HcR2JUCEDCRAzajf0YQdjjgDluQAKXob-O3nqIjvm2ujCEt82zLd-x4IkzyZJRvdhzrnQ7evgxT-ClqbyHM3SNYOZ0Bhu_Qw0LHqjLbkajr3GQtgt-M2MILK937g1cR70rqqxlf49Q-NFA5Xkp5lCbdCdzFb0XK5dPG-DSxfvslU2t_Xv6InqEydgBEP_MU_ZjCTIk9uyLMAfD1KOlWCSeINxK998U_7k33j54G-mA2XyhxfCEdY5-UyBU2flqrm2IGADaay9BN9K_klmuiJCq2883Isfm9h5Pm-o51SN8SmmOXS9kmis4-IMJYqaKgpa2z5CwpCHb67jUtNIpGbuEyUK5f_Eu-ymDlwj23HonnNA8AAaztpRNCbgLFhzjlGo5vDNCWz-bsIKjKH9baGYYkynbVtxabUTIXOUii4_7HNklm2gWrA7lFg-y-5vPOul-TkySCR_Q1L_7F5t6NlW19bJ0UIm05-MdyJIb8Yatpo6lqdNOR6fKQEkL2AhmyuH40z1dxkfdPjg6WxSBLdYJ920Tba1GuLU9BEA8Zsp8qQ4QnlJ18iRhH3Wrz5OIHs3ubkSNLGk81PJPV-_nDZde0ZE-c';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImFkMjU2OWRlLTVhYWQtNGU0Ny05MTJmLTg5ZjYzNTRmMzI0YyJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NywibWljRmFkZXJMYWJlbCI6ImFsdGVybmF0ZSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiZDA2NTRjMjctNmY3Ni00OGNmLTlmMDktMzdmY2NiZWVmNjEzIiwiaWF0IjoxNzcxNDc0NTAwLCJleHAiOjE4MjMzMTQ1MDB9.NwTeN5fDLKaGVR46YC_eeHrHg0e22SZbPNLGceifkh3U8XxJqUPKbNrU2L0RRHTKUyu07opdqNLI0pqL8YgzWWYtGjPwMp4trdMPLI2vqEFXR5Qz9S9T9YylQB0x7DViNw4pWEloqRmPLaprFh5AFavhvGCqqPxawbayyHqRTsbPdcSbZc1jUYfp6hJoalzs_crHNAFGBOyDMYHWcITY6Jt66fObxPQMrMRYxServapPHW3hPL4xj631xp7ZqA8Z5AkE8mBIrGmcclwsA7XW2y_95Vzhoeo__fUWiMNK61HMX-YWa-tSZY1vFJkTW-q9bk_9KbhFQTt6LkZ92niFx2PYXDOdoI9gzanTkqgxrOEB_AyJO3VwnFwsCPx0HJA95ufA4vFy92KJFqU4gNGLSPmwZvWKf6jyJwfBgaSTTFoB7Q404DHTx9pei5Em1R7XMuEkZmNhToodddWHXDi2OLluCucCST-VQYfisraqvmmof7mgVlvMDfcswSm-MJQ7xE0uDL2cmBv_aud7XmPz2Q7s68v3wJnUYS0IaTdJnKDZ8nVNRVr-TpnSs-W_bZRgFzt6dp5tsonwPgxdSvIzA77nUUOCJ5-eLGJSs8m96UN6ebWc6YkGLDEOYArcYgds5bra3LL1s1sObvbWJ7V-vDHOO7Fw7EaavbrCohxu_lA';
 
 test.beforeEach(async ({ page }) => {
 
@@ -26,8 +26,8 @@ const AudioReplaceMode = page.getByRole('combobox').nth(3);
 await expect(AudioReplaceMode).toBeVisible();
 await expect(AudioReplaceMode).toBeEnabled();
 await AudioReplaceMode.click();
-await AudioReplaceMode.selectOption('a');
-await expect(AudioReplaceMode).toHaveValue('a');
+await AudioReplaceMode.selectOption('b');
+await expect(AudioReplaceMode).toHaveValue('b');
 
 const DisableKeyboardShortcuts = page.locator('.react-switch-bg').first();
 await expect(DisableKeyboardShortcuts).toBeVisible();
@@ -37,14 +37,27 @@ await DisableKeyboardShortcuts.click();
 const Save = page.locator(settingsSaveButton());
 await expect(Save).toBeVisible();
 await expect(Save).toBeEnabled();
-await Save.click();
+
+//Check respone Save Setting
+const responePromise = page.waitForResponse(res =>
+  //URL endpoint API
+  res.url().includes('execute-api.eu-central-1.amazonaws.com/v1/saveDevicesSettings')&&
+  res.request().method() === 'POST'
+);
+
+await Save.click(); 
+const responeSavingSetting = await responePromise;
+
+expect (responeSavingSetting.status()).toBe(200);
+
+const body =await responeSavingSetting.json();
+expect(body).toBeTruthy();
 
 await page.waitForTimeout(6000);
   await page.keyboard.press('Escape');
   
 const Setting = page.locator(settingsDialog());
 await expect.soft(Setting).not.toBeVisible();
-await page.waitForTimeout(6000);
 
 
 await page.waitForTimeout(6000);
@@ -277,15 +290,25 @@ test('Invite DJ', async ({ page }) =>  {
   const InviteButton = page.locator(inviteButton());
   await expect(InviteButton).toBeVisible();
   await expect(InviteButton).toBeEnabled();
-  await InviteButton.click();
 
-  expect.soft()
+  const [response] = await Promise.all([
+  page.waitForResponse(res =>
+    //URL endpoint API 
+    res.url().includes('execute-api.eu-central-1.amazonaws.com/v1') &&
+    res.request().method() === 'POST'
+  ),
+  InviteButton.click()
+]);
 
-  const successMessage = page.locator(successInvitationMessage());
-  await expect.soft(successMessage).toBeVisible();
+// cek status dari response
+expect(response.status()).toBe(200);
 
+// ambil body setelah itu
+const responseBody = await response.json();
+// validasi body
+expect(responseBody).toBeTruthy();
+console.log(responseBody);
   console.log('Invite DJ sent successfully');
-  await page.waitForTimeout(3000);
 
 });
 
