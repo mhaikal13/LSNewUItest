@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType}  from './selectors.js';
+import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType, inputMail}  from './selectors.js';
 
 const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImFkMjU2OWRlLTVhYWQtNGU0Ny05MTJmLTg5ZjYzNTRmMzI0YyJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NywibWljRmFkZXJMYWJlbCI6ImFsdGVybmF0ZSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiZDA2NTRjMjctNmY3Ni00OGNmLTlmMDktMzdmY2NiZWVmNjEzIiwiaWF0IjoxNzcxNDc0NTAwLCJleHAiOjE4MjMzMTQ1MDB9.NwTeN5fDLKaGVR46YC_eeHrHg0e22SZbPNLGceifkh3U8XxJqUPKbNrU2L0RRHTKUyu07opdqNLI0pqL8YgzWWYtGjPwMp4trdMPLI2vqEFXR5Qz9S9T9YylQB0x7DViNw4pWEloqRmPLaprFh5AFavhvGCqqPxawbayyHqRTsbPdcSbZc1jUYfp6hJoalzs_crHNAFGBOyDMYHWcITY6Jt66fObxPQMrMRYxServapPHW3hPL4xj631xp7ZqA8Z5AkE8mBIrGmcclwsA7XW2y_95Vzhoeo__fUWiMNK61HMX-YWa-tSZY1vFJkTW-q9bk_9KbhFQTt6LkZ92niFx2PYXDOdoI9gzanTkqgxrOEB_AyJO3VwnFwsCPx0HJA95ufA4vFy92KJFqU4gNGLSPmwZvWKf6jyJwfBgaSTTFoB7Q404DHTx9pei5Em1R7XMuEkZmNhToodddWHXDi2OLluCucCST-VQYfisraqvmmof7mgVlvMDfcswSm-MJQ7xE0uDL2cmBv_aud7XmPz2Q7s68v3wJnUYS0IaTdJnKDZ8nVNRVr-TpnSs-W_bZRgFzt6dp5tsonwPgxdSvIzA77nUUOCJ5-eLGJSs8m96UN6ebWc6YkGLDEOYArcYgds5bra3LL1s1sObvbWJ7V-vDHOO7Fw7EaavbrCohxu_lA';
 
@@ -125,10 +125,15 @@ await page.waitForTimeout(700);
 // Press key 2
   await page.keyboard.press('2');
  
+await expect.soft (playerByrole2).toHaveClass('meter_wrap meter-boxes mic-active-red');
 console.log('---------------------------player 2 started--------------------------');
 
 
 await page.waitForTimeout(16000);
+
+await expect.soft (playerByrole2).not.toHaveClass('meter_wrap meter-boxes mic-active-red');
+console.log('----------------------------Player End----------------------');
+
 
   const playerByrole = page.locator(playerByRole('player1'));
 await expect(playerByrole).toBeVisible();
@@ -151,8 +156,14 @@ await playerByrole.click();
 await page.keyboard.press('1');
 console.log('---------------------------player 1 started--------------------------');
 
+await expect.soft (playerByrole).toContainClass('meter_wrap meter-boxes mic-active-red');
+console.log('---------------------------player 2 started--------------------------');
+
+
 await page.waitForTimeout(16000);
 
+await expect.soft (playerByrole).not.toContainClass('header-red-playing');
+console.log('----------------------------Player End----------------------');
 
 const contentPlayer3 = page.locator(playlistItemByIndex()).nth(6);
 await contentPlayer3.scrollIntoViewIfNeeded();
@@ -173,8 +184,14 @@ await playerByrole3.click();
 // Press key 3
 await page.keyboard.press('3');
 console.log('---------------------------player 3 started--------------------------');
+await expect.soft (playerByrole3).toContainClass('meter_wrap meter-boxes mic-active-red');
+console.log('---------------------------player 2 started--------------------------');
+
 
 await page.waitForTimeout(16000);
+
+await expect.soft (playerByrole3).not.toContainClass('header-red-playing');
+console.log('----------------------------Player End----------------------');
 
 
 });
@@ -229,8 +246,15 @@ console.log('Drag and Drop Linkmode Content to Player1');
 await page.waitForTimeout(10000);
 await player1linkmode.click();
 await page.keyboard.press('1');
+
+await expect.soft (player1linkmode).toContainClass('meter_wrap meter-boxes mic-active-red');
 console.log('---------------------------player 1 link mode started--------------------------');
 
+
+await page.waitForTimeout(16000);
+
+await expect.soft (player1linkmode).not.toContainClass('header-red-playing');
+console.log('----------------------------Player End----------------------');
 
 await page.waitForTimeout(420000);
 
@@ -238,6 +262,7 @@ await page.waitForTimeout(420000);
 
 test('Invite DJ', async ({ page }) =>  {
 
+  //Invite Via Whatsaap//
   const inviteDJ1 = page.locator (micMenuButton('player4'));
   await expect.soft(inviteDJ1).toBeVisible();
   await expect.soft(inviteDJ1).toBeEnabled();
@@ -291,24 +316,71 @@ test('Invite DJ', async ({ page }) =>  {
   await expect(InviteButton).toBeVisible();
   await expect(InviteButton).toBeEnabled();
 
-  const [response] = await Promise.all([
-  page.waitForResponse(res =>
-    //URL endpoint API 
-    res.url().includes('execute-api.eu-central-1.amazonaws.com/v1') &&
-    res.request().method() === 'POST'
-  ),
-  InviteButton.click()
-]);
 
-// cek status dari response
-expect(response.status()).toBe(200);
+//Check respone Save Setting
+const responePromise = page.waitForResponse(res =>
+  //URL endpoint API
+  res.url().includes('https://ayhooq2j87.execute-api.eu-central-1.amazonaws.com/v1')&&
+  res.request().method() === 'POST'
+);
 
-// ambil body setelah itu
-const responseBody = await response.json();
-// validasi body
-expect(responseBody).toBeTruthy();
-console.log(responseBody);
-  console.log('Invite DJ sent successfully');
+ await InviteButton.click();
+const responeInviteButton = await responePromise;
+
+expect (responeInviteButton.status()).toBe(200);
+
+const body =await responeInviteButton.json();
+expect(body).toBeTruthy();
+
+//Invite Via Email//
+const inviteDJ2 = page.locator(micMenuButton('player5'));
+await expect.soft(inviteDJ2).toBeVisible();
+  await expect.soft(inviteDJ2).toBeEnabled();
+  await inviteDJ2.click();
+  
+  await firstName.click();
+  await firstName.fill('AutoTest');
+
+  
+  await lastName.click();
+  await lastName.fill('AutoTest');
+
+ 
+  SendType.selectOption('Mail');
+  await SendType.click();
+
+  const inputemail = page.locator(inputMail());
+  await expect(inputemail).toBeVisible();
+  await expect(inputemail).toBeEnabled();
+  await inputemail.click();
+  await inputemail.fill('haikal@gmail.com');
+  
+  await page.waitForTimeout(6000);
+
+    await modeDJ.selectOption('Mic Only');
+  await modeDJ.click();
+
+  await ExpirationDJ.click();
+  await ExpirationDJ.fill('120');
+
+  await page.waitForTimeout(6000);
+
+//Check respone Save Setting
+const responePromise2 = page.waitForResponse(res =>
+  //URL endpoint API
+  res.url().includes('https://ayhooq2j87.execute-api.eu-central-1.amazonaws.com/v1')&&
+  res.request().method() === 'POST'
+);
+
+ await InviteButton.click();
+const responeInviteButton2 = await responePromise2;
+
+expect (responeInviteButton2.status()).toBe(200);
+
+await responeInviteButton2.json();
+expect(body).toBeTruthy();
+
+
 
 });
 
