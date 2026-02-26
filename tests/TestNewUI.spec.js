@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType, inputMail}  from './selectors.js';
+import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType, inputMail, HotkeySlot, presetButton, presetNameInput, saveHotkeyButton, presetItem}  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6ImFkMjU2OWRlLTVhYWQtNGU0Ny05MTJmLTg5ZjYzNTRmMzI0YyJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NywibWljRmFkZXJMYWJlbCI6ImFsdGVybmF0ZSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVdTLUlELUpLVCIsIm5ldHdvcmtDb2RlIjoiQldFIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJyZW9yZGVyRmFkZXIiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJuZXR3b3JrTW9kZSI6ZmFsc2UsImFsdGVybmF0ZVZpZXciOnRydWUsImNvbm5lY3RCcmlkZ2UiOmZhbHNlLCJyYWRpb0luZm9ybWF0aW9uIjpbeyJyYWRpb05hbWUiOiJCYXllcm53ZWxsZSIsInJhZGlvSW1hZ2UiOiJodHRwczovL2RiMXF1NnN3eXFmNnguY2xvdWRmcm9udC5uZXQvYWZmaWxpYXRlcy9id2Uuc3ZnIiwicmFkaW9Db2RlIjoiRlJCIiwiY2hhbm5lbElkIjoiNTYzIiwibmV0d29ya0lkIjoiNjAiLCJmb3JtYXRJZCI6IjEifV0sImxvY2FsQ29kZSI6IkZSQiIsImlzX3NoaWZ0X2NoZWNrIjpmYWxzZSwianRpIjoiZDA2NTRjMjctNmY3Ni00OGNmLTlmMDktMzdmY2NiZWVmNjEzIiwiaWF0IjoxNzcxNDc0NTAwLCJleHAiOjE4MjMzMTQ1MDB9.NwTeN5fDLKaGVR46YC_eeHrHg0e22SZbPNLGceifkh3U8XxJqUPKbNrU2L0RRHTKUyu07opdqNLI0pqL8YgzWWYtGjPwMp4trdMPLI2vqEFXR5Qz9S9T9YylQB0x7DViNw4pWEloqRmPLaprFh5AFavhvGCqqPxawbayyHqRTsbPdcSbZc1jUYfp6hJoalzs_crHNAFGBOyDMYHWcITY6Jt66fObxPQMrMRYxServapPHW3hPL4xj631xp7ZqA8Z5AkE8mBIrGmcclwsA7XW2y_95Vzhoeo__fUWiMNK61HMX-YWa-tSZY1vFJkTW-q9bk_9KbhFQTt6LkZ92niFx2PYXDOdoI9gzanTkqgxrOEB_AyJO3VwnFwsCPx0HJA95ufA4vFy92KJFqU4gNGLSPmwZvWKf6jyJwfBgaSTTFoB7Q404DHTx9pei5Em1R7XMuEkZmNhToodddWHXDi2OLluCucCST-VQYfisraqvmmof7mgVlvMDfcswSm-MJQ7xE0uDL2cmBv_aud7XmPz2Q7s68v3wJnUYS0IaTdJnKDZ8nVNRVr-TpnSs-W_bZRgFzt6dp5tsonwPgxdSvIzA77nUUOCJ5-eLGJSs8m96UN6ebWc6YkGLDEOYArcYgds5bra3LL1s1sObvbWJ7V-vDHOO7Fw7EaavbrCohxu_lA';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjgxM2Q1YWRhLWVkMzAtNDMzNC05NTU0LTEzOGYxNGQ0MWExZiJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NCwibWljRmFkZXJMYWJlbCI6IkFMVEVSTkFURSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVotREUtRlJBIiwibmV0d29ya0NvZGUiOiJCV0UiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInJlb3JkZXJGYWRlciI6ZmFsc2UsInRpbWVab25lIjoiRXVyb3BlL0JlcmxpbiIsIm5ldHdvcmtNb2RlIjpmYWxzZSwiYWx0ZXJuYXRlVmlldyI6dHJ1ZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJheWVybndlbGxlIiwicmFkaW9JbWFnZSI6Imh0dHBzOi8vZGIxcXU2c3d5cWY2eC5jbG91ZGZyb250Lm5ldC9hZmZpbGlhdGVzL2J3ZS5zdmciLCJyYWRpb0NvZGUiOiJGUkIiLCJjaGFubmVsSWQiOiI1NjMiLCJuZXR3b3JrSWQiOiI2MCIsImZvcm1hdElkIjoiMSJ9XSwibG9jYWxDb2RlIjoiRlJCIiwiaXNfc2hpZnRfY2hlY2siOmZhbHNlLCJqdGkiOiI4ZmRjZmI4Yi1kOWE0LTQ3NTctOGMxMS0zNmMxMmM0NjBlNDEiLCJpYXQiOjE3NzIwNzE1NjcsImV4cCI6MTgyMzkxMTU2N30.fG6X4dFZwwEYkyogzNWpxz6T5ZAromzjMqDQL2sp35e-4asad1CD4tSMnPeKVJRfxMNRbyqOnrBYyobjR4P-MSb5eItsJTI5iaiNsN8PCi9olBxYagjk9ruEyyD_Ojes6ycTrqFmORGGYMHKVEA9ui0psLbPdyo9UPflru9McTBfkboUxAE-cQpLec0wnfrHQg-J8R1FxwhwM5V-_neaQ11L84eVEzSK3i3fJXz2X9KZMsqHKjtiyw0JT0zrPxRcG6OjoE_p-qH2kj_TMIFHNny_Zt4OMS12Xm6zXNzsct2WpzYQjFPk20PlEC44cbeY9phfLU-aRd_iN9YssGR1UJmrOCfbON60xHOkV9CapRrNnOuXBsLMxyDAD_s7jBVUcmeziNCC9I67i_H-zVJagl8HPJQfrZDWvOvWugT-JT4vRcB73SLrj8FC77SIKLGQJ22wgqko1_yZOApHsMquAB4vs2YKIO9d7dAx3NHnatbXu5thrMkwiFVvT-mxAzFYDq6FpH0w4OGXiOerq1HiIGw4iBeyx2VXqQJdzi4JFFm88NRXcApbqhsgD8OeoOmb8hx2Wr5QwYutq0i2SAZObAVSGWGEuTrTl4PoTLa8G18npRO3zfOlKYMzwQ5sIKEdHhBf1uPpqfdL5D-Y7MrvAf19peNwp4YZ3LFmx-5NKFo';
 
 test.beforeEach(async ({ page }) => {
 
@@ -60,7 +60,7 @@ const Setting = page.locator(settingsDialog());
 await expect.soft(Setting).not.toBeVisible();
 
 
-await page.waitForTimeout(6000);
+// await page.waitForTimeout(6000);
 
 
 // const scrollContainer = page.locator(datePickerCalendarContainer());
@@ -70,7 +70,7 @@ await page.waitForTimeout(6000);
 
 // await page.waitForTimeout(6000);
 
-// const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 11th,' });
+// const OptionDate =  page.getByRole('option', { name: 'Choose Wednesday, February 25th,' });
 // await expect(OptionDate).toBeVisible();
 // await expect(OptionDate).toBeEnabled();
 // await OptionDate.click();
@@ -94,7 +94,7 @@ await page.waitForTimeout(6000);
 // const selectedDate = page.locator(datePickerCalendarContainer());
 // await expect (selectedDate).toBeVisible();
 // await expect.soft(selectedDate)
-// .toHaveText('Selected date: Wednesday, February 11th, 2026 at 5:00 PM');
+// .toHaveText('Selected date: Wednesday, February 25th, 2026 at 5:00 PM');
 
 await page.waitForTimeout(10000);
 
@@ -263,7 +263,7 @@ await page.waitForTimeout(420000);
 test('Invite DJ', async ({ page }) =>  {
 
   //Invite Via Whatsaap//
-  const inviteDJ1 = page.locator (micMenuButton('player4'));
+  const inviteDJ1 = page.locator (micMenuButton('player5'));
   await expect.soft(inviteDJ1).toBeVisible();
   await expect.soft(inviteDJ1).toBeEnabled();
   await inviteDJ1.click();
@@ -380,7 +380,48 @@ expect (responeInviteButton2.status()).toBe(200);
 await responeInviteButton2.json();
 expect(body).toBeTruthy();
 
+});
 
+test('Preset', async ({ page }) =>  {
+
+  const Contenthotkey = page.locator(playlistItemByIndex()).nth(3);
+  await expect.soft (Contenthotkey).toBeVisible();
+  await expect.soft (Contenthotkey).toBeEnabled();
+
+  const hotkeySlot = page.locator(HotkeySlot(2));
+  await expect.soft (hotkeySlot).toBeVisible();
+  await expect.soft (hotkeySlot).toBeEnabled();
+
+  await Contenthotkey.dragTo (hotkeySlot);
+
+  await page.waitForTimeout(7000);
+
+  const presetbutton = presetButton(page);
+  await expect.soft(presetbutton).toBeVisible();
+  await presetbutton.click();
+
+  await page.waitForTimeout(7000);
+
+  const presetname = presetNameInput(page);
+  await expect.soft (presetname).toBeVisible();
+  await expect.soft (presetname).toBeEnabled();
+  await presetname.click();
+  await presetname.fill('preset hotkey auto2');
+
+  const savepresethotkey = saveHotkeyButton(page);
+  await expect.soft (savepresethotkey).toBeVisible();
+  await expect.soft (savepresethotkey).toBeEnabled();
+  await savepresethotkey.click();
+
+  await page.waitForTimeout(7000);
+  await presetbutton.click();
+  const Filepreset = page.locator('div').filter({ hasText: /^preset hotkey auto2$/ }).first();
+  await Filepreset.scrollIntoViewIfNeeded();
+  await expect.soft(Filepreset).toBeVisible();
+  await expect.soft (Filepreset).toBeEnabled();
+  await Filepreset.click();
+
+  
 
 });
 

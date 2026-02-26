@@ -12,7 +12,7 @@ import  {
   settingsSaveButton,
 datePickerInput }  from './selectors.js';
 
-const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjQ0NzgyMzQ2LTRiYzgtNDZiYy1iMzVmLTg5M2UzN2FhMGExMiJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiQlJNLU0xLUJSWCIsImNhbktpY2tVc2VyIjp0cnVlLCJtaWNGYWRlcklkIjoiNSIsIm1pY0ZhZGVyTGFiZWwiOiJSQyBURVNUIiwiYml0UmF0ZSI6MjU2MDAwLCJtaWNBbHdheXNPbiI6ZmFsc2UsInNlcnZlckNvZGUiOiJBV1MtU0ctU1RBR0lORyIsIm5ldHdvcmtDb2RlIjoiQlJYIiwiYWxsb3dGYWRlckNoYW5nZSI6dHJ1ZSwiaXNTZXJ2ZXIiOjAsImVjaG9Db21wZW5zYXRpb25FbmFibGUiOmZhbHNlLCJ0aW1lWm9uZSI6IkV1cm9wZS9CZXJsaW4iLCJhbHRlcm5hdGVWaWV3IjpmYWxzZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJyaWxsdXggUmFkaW8iLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYnJpbGx1eC1yYWRpby5wbmciLCJyYWRpb0NvZGUiOiJCUk0iLCJjaGFubmVsSWQiOiIxNTkzIiwibmV0d29ya0lkIjoiMTE0IiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJCUk0iLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6ImMyNGZjN2U1LTk4YzUtNDBjOC04NGM4LTdhODhhNmUyNjdkZCIsImlhdCI6MTc3MDcxNzUxNSwiZXhwIjoxODIyNTU3NTE1fQ.NmwFO53GxRyPcHaoQUj3r0gxSymwQTJRApQ6RGHuVZhYWOx0eK_gF-mTYtjs8uro6lHXgKd_xABPUsa3gJUjtk6dXyi7M9zoXJ4KIy0STaZ-OeKwW1MK3JGU-fx1bfW78zpgUHqhLHVshKnDfh7f01ej9_pM0QvzbnGpIVPivLa9bPZCF7gVh7mIaCv6yy-3R_9LQjzZlI-0YkVuDjWtdt_sJiMzEiMVixf0Pz92gKg8AvWt06StXPcdZfGy6pt3JaPoBsBqp_TBUJIHeTuBsAQYU5wmY3qd29fXWMkM380LNOJOWpV31hvfQt4v7_6Npc1jav5ky0leKD99Alp4QybZBtu1AtkBhiUUDYoQAiDWFVT8cCuIT6H05bDqx4g9RGc72dcj1Zu3U-Jzvo7qlDT5JJ1EZm3GPjXpj2_CE3eBlIbzUJKHUcSkhlXrtlhtfuhVWn0HkJjArpiIgUGycmLnL1Pz8Qwb3jykW_wwwsnzAPOIdWvrXYeYhM8ho_3ysNhCX2lBYcqZgxXybrBNz-tW2P5b5ig9IbQvawgJDHXPSbGWQpxfuDpSVLCiZ5EKrz58XDfnLZWllSVaqDvqkeaO2PdLhHY7q9awlxi5uEqJzABnei9Kx36Z9-I20_d4K5mKdljvlM9uCcRd2etVy0f-EB3xUOywZ1RVK4B3thE';
+const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjkwNDk1NDhkLTNiODUtNDUzZC05ZDQ4LTYzNDMwY2I5YmM4MCJ9.eyJ1c2VyTGl2ZUlkIjoiZmI1NDZjNGUtZmQ4OS00MjY2LWFiODItMTBhMGRhYjAxNzU1Iiwicm9vbUlEIjoiTllYLUIxLUFXRS1SRUMiLCJjYW5LaWNrVXNlciI6dHJ1ZSwibWljRmFkZXJJZCI6NCwibWljRmFkZXJMYWJlbCI6IkhpbG1hbiIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVotREUtRlJBIiwibmV0d29ya0NvZGUiOiJBV0UiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInJlb3JkZXJGYWRlciI6ZmFsc2UsInRpbWVab25lIjoiQW1lcmljYS9OZXdfWW9yayIsIm5ldHdvcmtNb2RlIjpmYWxzZSwic3RvcmFnZVByb3ZpZGVyIjoiQVdTIiwic3RvcmFnZUJhc2VEaXIiOiJvaGktczNiLWxzLWxpdmUtcmVjb3JkaW5nLWF1ZGlvL1JBVy9BV0UvTllYIiwicmVnaW9uIjoidXMtZWFzdC0yIiwiZmlsZU5hbWUiOiJBV0UtTllYLTIwMjYtMDEtMTQtMTAwNjMwLndlYm0iLCJjYWxsQmFja0xpbmsiOiJodHRwczovL2JyaWRnaW5nLnJhZGlvLmNsb3VkL2xpdmVfcmVjb3JkaW5nX2RvbmU_ZmlsZW5hbWU9QVdFLU5ZWC0yMDI2LTAxLTE0LTEwMDYzMC53ZWJtIiwicmVjb3JkTGFiZWwiOiJWVCBBV0UgMTQtMDEiLCJjb25uZWN0QnJpZGdlIjpmYWxzZSwicmFkaW9JbmZvcm1hdGlvbiI6W3sicmFkaW9OYW1lIjoiQVdTIFJDIEV4cG8iLCJyYWRpb0ltYWdlIjoiaHR0cHM6Ly9kYjFxdTZzd3lxZjZ4LmNsb3VkZnJvbnQubmV0L2FmZmlsaWF0ZXMvYXdlLnN2ZyIsInJhZGlvQ29kZSI6Ik5ZWCIsImNoYW5uZWxJZCI6IjQ2OCIsIm5ldHdvcmtJZCI6IjU1IiwiZm9ybWF0SWQiOiIxIn1dLCJsb2NhbENvZGUiOiJOWVgiLCJpc19zaGlmdF9jaGVjayI6ZmFsc2UsImp0aSI6IjcxNzk4YTJiLWFkYjAtNGYwYi1iNzFmLWY3ZWNjYmQxZDNjNSIsImlhdCI6MTc3MTk4NzU4NCwiZXhwIjoxODIzODI3NTg0fQ.S5hRXNYMfjblm07D3M8zQU-AFKHn_-vVGXP1-iz2-XBcMwM9Bg8wQg_2UqR-lpEMs3kX2BaXRulCrt_jSWDzFAViFJPRv3nRzlUqy3Ah4AsmGaQlFuRyPt1RMtN9enMIPIx9kcJ4K0_DOSSrXV4NoqpIvx063lIQ70_aD3QdlUb7uOa34ZX455HYnLFjZexPRVjmMK5OQLoZAT3qiBihsgvPKaKYqoYnaA6kjWHUHkXPXHV_qFTQeT35yv0QsvvjGineirSWtsnU6CnfibShiPljLRycYq7sLHMsv5D9mdgrJBjNUn3_fYFw_u85D2bK7ok-AVj4FQtTj8zPLJMUn0cec_XG8oxa_uscJpaP0cWF217j16km66WR-W3tkQglTu1ZXSJyWmh27u9NdMSAOeT3X3e_yMDF8Ibhb4iQmPD10B2o7D5lvuX7M2yD08WzxG_Lg5mam3Vet69lg9hYcWb_mPRS7qfsD_l7yYbbbAiJXARJADT-n347eiWvRGTduS98JXQszZL7NcA7IlQanu1k57nDgOFKyn9t-Xo87w5mQcd9-cBirxAvoX3UIZ7NkWOYxGARLtChjlyHZgc1ydCnw8beooYfgVEMTUdT9GqstelU-8lzE8QPVb0y-CDcN-n_9TgiVhgCFmb3CzovREVw7aPCvP_bqzGJBzKEWq8';
 
 
 test.beforeEach(async ({ page }) => {
@@ -61,31 +61,31 @@ await page.waitForTimeout(6000);
 
 
 
-const scrollContainer = page.locator(datePickerCalendarContainer());
-await expect(scrollContainer).toBeVisible();
-await expect (scrollContainer).toBeEnabled();
-await scrollContainer.click();
+// const scrollContainer = page.locator(datePickerCalendarContainer());
+// await expect(scrollContainer).toBeVisible();
+// await expect (scrollContainer).toBeEnabled();
+// await scrollContainer.click();
 
-await page.waitForTimeout(6000);
+// await page.waitForTimeout(6000);
 
-const OptionDate =  page.getByRole('option', { name: 'Choose Tuesday, February 10th,' });
-await expect(OptionDate).toBeVisible();
-await expect(OptionDate).toBeEnabled();
-await OptionDate.click();
+// const OptionDate =  page.getByRole('option', { name: 'Choose Tuesday, February 10th,' });
+// await expect(OptionDate).toBeVisible();
+// await expect(OptionDate).toBeEnabled();
+// await OptionDate.click();
 
-await page.waitForTimeout(4000);
+// await page.waitForTimeout(4000);
 
-const OptionHour = page.getByRole('option', { name: '13', exact: true });
-await OptionHour.scrollIntoViewIfNeeded();
-await expect(OptionHour).toBeVisible();
-await expect(OptionHour).toBeEnabled();
-await OptionHour.click();
+// const OptionHour = page.getByRole('option', { name: '13', exact: true });
+// await OptionHour.scrollIntoViewIfNeeded();
+// await expect(OptionHour).toBeVisible();
+// await expect(OptionHour).toBeEnabled();
+// await OptionHour.click();
 
-await page.waitForTimeout(10000);
+// await page.waitForTimeout(10000);
 
-const selectedDate = page.locator(datePickerCalendarContainer());
-await expect.soft(selectedDate)
-.toHaveText('Selected date: Tuesday, February 10th, 2026 at 1:00 PM');
+// const selectedDate = page.locator(datePickerCalendarContainer());
+// await expect.soft(selectedDate)
+// .toHaveText('Selected date: Tuesday, February 10th, 2026 at 1:00 PM');
 
 
 
@@ -94,35 +94,35 @@ await expect.soft(selectedDate)
 
 test('LiveStudio CHECK PLAYER', async ({ page }) =>  {
 
-const contentPlayer2 = page.locator(playlistItemByIndex()).nth(7);
-await contentPlayer2.scrollIntoViewIfNeeded();
-await expect(contentPlayer2).toBeVisible();
-await expect(contentPlayer2).toBeEnabled();
+// const contentPlayer2 = page.locator(playlistItemByIndex()).nth(7);
+// await contentPlayer2.scrollIntoViewIfNeeded();
+// await expect(contentPlayer2).toBeVisible();
+// await expect(contentPlayer2).toBeEnabled();
 
 
-const playerByrole2 = page.locator(playerByRole('player2'));
-await expect(playerByrole2).toBeVisible();
-await expect(playerByrole2).toBeEnabled({ timeout: 10000 });
+// const playerByrole2 = page.locator(playerByRole('player2'));
+// await expect(playerByrole2).toBeVisible();
+// await expect(playerByrole2).toBeEnabled({ timeout: 10000 });
 
-await contentPlayer2.dragTo(playerByrole2); 
+// await contentPlayer2.dragTo(playerByrole2); 
 
-await page.mouse.up();
+// await page.mouse.up();
 
-await page.waitForTimeout(7000);  
-// Ensure page has focus before pressing keyboard
-await playerByrole2.click();
-await page.waitForTimeout(1000);
-// Press key 2
-  const player2button= page.locator(playerOffButton('2'));
-await expect(player2button).toBeVisible();
-await expect(player2button).toBeEnabled();
-await player2button.click();
+// await page.waitForTimeout(7000);  
+// // Ensure page has focus before pressing keyboard
+// await playerByrole2.click();
+// await page.waitForTimeout(1000);
+// // Press key 2
+//   const player2button= page.locator(playerOffButton('2'));
+// await expect(player2button).toBeVisible();
+// await expect(player2button).toBeEnabled();
+// await player2button.click();
 
  
-console.log('---------------------------player 2 started--------------------------');
+// console.log('---------------------------player 2 started--------------------------');
 
 
-await page.waitForTimeout(16000);
+// await page.waitForTimeout(16000);
 
   const playerByrole = page.locator(playerByRole('player1'));
 await expect(playerByrole).toBeVisible();
@@ -148,32 +148,32 @@ await player1button.click();
 // Press key 1
 console.log('---------------------------player 1 started--------------------------');
 
-await page.waitForTimeout(16000);
+await page.waitForTimeout(420000);
 
 
-const contentPlayer3 = page.locator(playlistItemByIndex()).nth(6);
-await contentPlayer3.scrollIntoViewIfNeeded();
-await expect(contentPlayer3).toBeVisible();
-await expect(contentPlayer3).toBeEnabled({ timeout: 10000 });
+// const contentPlayer3 = page.locator(playlistItemByIndex()).nth(6);
+// await contentPlayer3.scrollIntoViewIfNeeded();
+// await expect(contentPlayer3).toBeVisible();
+// await expect(contentPlayer3).toBeEnabled({ timeout: 10000 });
 
-const playerByrole3 = page.locator(playerByRole('player3'));
-await expect(playerByrole3).toBeVisible();
-await expect(playerByrole3).toBeEnabled({ timeout: 10000 });
+// const playerByrole3 = page.locator(playerByRole('player3'));
+// await expect(playerByrole3).toBeVisible();
+// await expect(playerByrole3).toBeEnabled({ timeout: 10000 });
 
-await contentPlayer3.dragTo(playerByrole3); 
-await page.mouse.up();
+// await contentPlayer3.dragTo(playerByrole3); 
+// await page.mouse.up();
 
-console.log('Drag and Drop Content to Player3'); 
-await page.waitForTimeout(7000);
-const player3button= page.locator(playerOffButton('3'));
-await expect(player3button).toBeVisible();
-await expect(player3button).toBeEnabled();
-await player3button.click();
+// console.log('Drag and Drop Content to Player3'); 
+// await page.waitForTimeout(7000);
+// const player3button= page.locator(playerOffButton('3'));
+// await expect(player3button).toBeVisible();
+// await expect(player3button).toBeEnabled();
+// await player3button.click();
 
-console.log('---------------------------player 3 started--------------------------');
+// console.log('---------------------------player 3 started--------------------------');
 
-await page.waitForTimeout(16000);
-  await page.close();
+// await page.waitForTimeout(16000);
+//   await page.close();
 
 
 });

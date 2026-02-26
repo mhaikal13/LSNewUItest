@@ -242,20 +242,71 @@ export const chatMessagesList = () => {
 };
 
 // ============================================================================
-// Hotkey Panels
+// Hotkey Panels & Preset
 // ============================================================================
 
-export const hotkey1Panel = () => {
-  return `[role="hotkey1"]`;
+// HOTKEY PANEL
+export const hotkeyPanel = (index) => {
+  return `[role="hotkey${index}"]`;
 };
 
-export const hotkey2Panel = () => {
-  return `[role="hotkey2"]`;
+// SLOT DRAG AREA
+export const HotkeySlot = (index) => {
+  return `div:has-text("Drag Here") >> nth=${index}`;
 };
 
-export const hotkeyItem = (panelRole, index) => {
-  // panelRole: 'hotkey1' or 'hotkey2', index: 0-based
-  return `[role="${panelRole}"] .KeyWrapper`;
+
+
+// HOTKEY ITEM BY TITLE
+export const hotkeyItemByTitle = (title) => {
+  return `text=${title}`;
+};
+
+// PRESET BUTTON
+export const presetButton = (page) => {
+  return page.locator('div').filter({ hasText: /^Preset$/ }).nth(1);
+};
+
+// INPUT PRESET NAME
+export const presetNameInput = (page) => {
+  return page.getByRole('textbox', { name : 'Type Name Here'});
+};
+
+// SAVE HOTKEY BUTTON
+export const saveHotkeyButton = (page) => {
+  return page.getByRole('button', { name: 'Save Hotkey', exact: true });
+
+};
+
+// PRESET ITEM
+export const presetItem = ( page)=> {
+  return page.locator('div').filter({ hasText: /^preset hotkey auto$/ }).first()
+  
+};
+
+// EMPTY OPTION BUTTON
+export const emptyOptionButton = () => {
+  return `button:has-text("")`;
+};
+
+// SAVE CHANGES BUTTON
+export const saveChangesButton = () => {
+  return `div:has-text("Save changes")`;
+};
+
+// RESET DEFAULT BUTTON
+export const resetDefaultButton = () => {
+  return `text=Reset to default`;
+};
+
+// LOAD ANOTHER BUTTON
+export const loadAnotherButton = () => {
+  return `div:has-text("Load another")`;
+};
+
+// CLOSE PRESET BUTTON
+export const closePresetButton = () => {
+  return `text=Close Preset`;
 };
 
 // ============================================================================
@@ -485,9 +536,18 @@ export default {
   chatMessagesList,
 
   // Hotkeys
-  hotkey1Panel,
-  hotkey2Panel,
-  hotkeyItem,
+hotkeyPanel,
+HotkeySlot,
+hotkeyItemByTitle,
+presetButton,
+presetNameInput,
+saveHotkeyButton,
+presetItem,
+emptyOptionButton,
+saveChangesButton,
+resetDefaultButton,
+loadAnotherButton,
+closePresetButton,
 
   // Main
   mainRoot,
