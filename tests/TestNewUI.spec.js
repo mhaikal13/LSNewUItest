@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType, inputMail, HotkeySlot, presetButton, presetNameInput, saveHotkeyButton, presetItem}  from './selectors.js';
+import  { datePickerCalendarContainer, settingsDialog, ButtonOK, playlistItemLinkModeIcon  ,playerTitleText, timerInPlayer, playerByRole, playlistItemByIndex, settingsButton, settingsSaveButton, micMenuButton, firstnameInput, inviteOverlay, inputWhatsaap,selectMode,inputExpiration, inviteButton, successInvitationMessage, inputFirstName, inputLastName, selectSendType, inputMail, HotkeySlot, presetButton, presetNameInput, saveHotkeyButton, presetItem,OptionButton, saveChangesButton}  from './selectors.js';
 
 const URL = 'https://live-beta.radio.cloud/?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImp0aSI6IjgxM2Q1YWRhLWVkMzAtNDMzNC05NTU0LTEzOGYxNGQ0MWExZiJ9.eyJ1c2VyTGl2ZUlkIjoiYjMzNGIyOWUtNmMwZi00ZTNhLWEzNDEtMWJjMDQ4MDAwY2JlIiwicm9vbUlEIjoiRlJCLUIxLUJXRSIsImNhbktpY2tVc2VyIjpmYWxzZSwibWljRmFkZXJJZCI6NCwibWljRmFkZXJMYWJlbCI6IkFMVEVSTkFURSIsImJpdFJhdGUiOjI1NjAwMCwibWljQWx3YXlzT24iOmZhbHNlLCJzZXJ2ZXJDb2RlIjoiQVotREUtRlJBIiwibmV0d29ya0NvZGUiOiJCV0UiLCJhbGxvd0ZhZGVyQ2hhbmdlIjp0cnVlLCJpc1NlcnZlciI6MCwiZWNob0NvbXBlbnNhdGlvbkVuYWJsZSI6ZmFsc2UsInJlb3JkZXJGYWRlciI6ZmFsc2UsInRpbWVab25lIjoiRXVyb3BlL0JlcmxpbiIsIm5ldHdvcmtNb2RlIjpmYWxzZSwiYWx0ZXJuYXRlVmlldyI6dHJ1ZSwiY29ubmVjdEJyaWRnZSI6ZmFsc2UsInJhZGlvSW5mb3JtYXRpb24iOlt7InJhZGlvTmFtZSI6IkJheWVybndlbGxlIiwicmFkaW9JbWFnZSI6Imh0dHBzOi8vZGIxcXU2c3d5cWY2eC5jbG91ZGZyb250Lm5ldC9hZmZpbGlhdGVzL2J3ZS5zdmciLCJyYWRpb0NvZGUiOiJGUkIiLCJjaGFubmVsSWQiOiI1NjMiLCJuZXR3b3JrSWQiOiI2MCIsImZvcm1hdElkIjoiMSJ9XSwibG9jYWxDb2RlIjoiRlJCIiwiaXNfc2hpZnRfY2hlY2siOmZhbHNlLCJqdGkiOiI4ZmRjZmI4Yi1kOWE0LTQ3NTctOGMxMS0zNmMxMmM0NjBlNDEiLCJpYXQiOjE3NzIwNzE1NjcsImV4cCI6MTgyMzkxMTU2N30.fG6X4dFZwwEYkyogzNWpxz6T5ZAromzjMqDQL2sp35e-4asad1CD4tSMnPeKVJRfxMNRbyqOnrBYyobjR4P-MSb5eItsJTI5iaiNsN8PCi9olBxYagjk9ruEyyD_Ojes6ycTrqFmORGGYMHKVEA9ui0psLbPdyo9UPflru9McTBfkboUxAE-cQpLec0wnfrHQg-J8R1FxwhwM5V-_neaQ11L84eVEzSK3i3fJXz2X9KZMsqHKjtiyw0JT0zrPxRcG6OjoE_p-qH2kj_TMIFHNny_Zt4OMS12Xm6zXNzsct2WpzYQjFPk20PlEC44cbeY9phfLU-aRd_iN9YssGR1UJmrOCfbON60xHOkV9CapRrNnOuXBsLMxyDAD_s7jBVUcmeziNCC9I67i_H-zVJagl8HPJQfrZDWvOvWugT-JT4vRcB73SLrj8FC77SIKLGQJ22wgqko1_yZOApHsMquAB4vs2YKIO9d7dAx3NHnatbXu5thrMkwiFVvT-mxAzFYDq6FpH0w4OGXiOerq1HiIGw4iBeyx2VXqQJdzi4JFFm88NRXcApbqhsgD8OeoOmb8hx2Wr5QwYutq0i2SAZObAVSGWGEuTrTl4PoTLa8G18npRO3zfOlKYMzwQ5sIKEdHhBf1uPpqfdL5D-Y7MrvAf19peNwp4YZ3LFmx-5NKFo';
 
@@ -384,44 +384,126 @@ expect(body).toBeTruthy();
 
 test('Preset', async ({ page }) =>  {
 
-  const Contenthotkey = page.locator(playlistItemByIndex()).nth(3);
-  await expect.soft (Contenthotkey).toBeVisible();
-  await expect.soft (Contenthotkey).toBeEnabled();
+  // const Contenthotkey = page.locator(playlistItemByIndex()).nth(3);
+  // await expect.soft (Contenthotkey).toBeVisible();
+  // await expect.soft (Contenthotkey).toBeEnabled();
 
+  // const hotkeySlot = page.locator(HotkeySlot(2));
+  // await expect.soft (hotkeySlot).toBeVisible();
+  // await expect.soft (hotkeySlot).toBeEnabled();
+
+  // await Contenthotkey.dragTo (hotkeySlot);
+
+  // await page.waitForTimeout(7000);
+
+  // const presetbutton = presetButton(page);
+  // await expect.soft(presetbutton).toBeVisible();
+  // await presetbutton.click();
+
+  // await page.waitForTimeout(7000);
+
+  // const presetname = presetNameInput(page);
+  // await expect.soft (presetname).toBeVisible();
+  // await expect.soft (presetname).toBeEnabled();
+  // await presetname.click();
+  // await presetname.fill('preset hotkey auto2');
+
+  // const savepresethotkey = saveHotkeyButton(page);
+  // await expect.soft (savepresethotkey).toBeVisible();
+  // await expect.soft (savepresethotkey).toBeEnabled();
+  // await savepresethotkey.click();
+
+  // await page.waitForTimeout(7000);
+  // await presetbutton.click();
+
+  // const Filepreset = page.locator('div').filter({ hasText: /^preset hotkey auto2$/ }).first();
+  // await Filepreset.scrollIntoViewIfNeeded();
+  // await expect.soft(Filepreset).toBeVisible();
+  // await expect.soft (Filepreset).toBeEnabled();
+  // await Filepreset.click();
+
+
+  // === 1. Drag content to hotkey slot ===
+  const content1 = page.locator(playlistItemByIndex()).nth(3);
+  const content2 = page.locator(playlistItemByIndex()).nth(4);
   const hotkeySlot = page.locator(HotkeySlot(2));
-  await expect.soft (hotkeySlot).toBeVisible();
-  await expect.soft (hotkeySlot).toBeEnabled();
+  const hotkeySlot2 = page.locator(HotkeySlot(5));
 
-  await Contenthotkey.dragTo (hotkeySlot);
-
-  await page.waitForTimeout(7000);
-
-  const presetbutton = presetButton(page);
-  await expect.soft(presetbutton).toBeVisible();
-  await presetbutton.click();
-
-  await page.waitForTimeout(7000);
-
-  const presetname = presetNameInput(page);
-  await expect.soft (presetname).toBeVisible();
-  await expect.soft (presetname).toBeEnabled();
-  await presetname.click();
-  await presetname.fill('preset hotkey auto2');
-
-  const savepresethotkey = saveHotkeyButton(page);
-  await expect.soft (savepresethotkey).toBeVisible();
-  await expect.soft (savepresethotkey).toBeEnabled();
-  await savepresethotkey.click();
-
-  await page.waitForTimeout(7000);
-  await presetbutton.click();
-  const Filepreset = page.locator('div').filter({ hasText: /^preset hotkey auto2$/ }).first();
-  await Filepreset.scrollIntoViewIfNeeded();
-  await expect.soft(Filepreset).toBeVisible();
-  await expect.soft (Filepreset).toBeEnabled();
-  await Filepreset.click();
-
+  await expect.soft(content1).toBeVisible();
+  await expect.soft(content1).toBeEnabled();
   
+  await expect.soft(hotkeySlot).toBeVisible();
+  await expect.soft(hotkeySlot).toBeEnabled();
+
+  await content1.dragTo(hotkeySlot);
+
+  // === 2. Click preset button ===
+  const presetBtn = presetButton(page);
+  await expect.soft(presetBtn).toBeVisible();
+  await presetBtn.click();
+
+  // === 3. Input file name ===
+  const presetInput = presetNameInput(page);
+  await expect(presetInput).toBeVisible();
+  await presetInput.fill('preset automation');
+
+  // === 4. Click save button ===
+  const saveBtn = saveHotkeyButton(page);
+  await expect(saveBtn).toBeEnabled();
+  await saveBtn.click();
+
+  await page.waitForTimeout(7000);
+
+  // === 5. Click preset button again ===
+  await expect(presetBtn).toBeVisible();
+  await presetBtn.click();
+
+  await page.waitForTimeout(7000);
+
+
+  // === 6. Click newly saved file ===
+  const savedPreset = page.locator('div').filter({ hasText: /^preset automation$/ }).first();
+  await expect(savedPreset).toBeVisible();
+  await savedPreset.scrollIntoViewIfNeeded();
+  await savedPreset.click();
+
+  await page.waitForTimeout(7000);
+
+  // === 7. Drag content again to hotkey slot ===
+  await expect(content2).toBeVisible();
+  await expect(content2).toBeEnabled();
+
+  await expect.soft(hotkeySlot2).toBeVisible();
+  await expect.soft(hotkeySlot2).toBeEnabled();
+
+  await content2.dragTo(hotkeySlot2);
+  await page.waitForTimeout(7000);
+
+  // === 8. Click option button ===
+  const optionbutton = OptionButton(page);
+  await expect (optionbutton).toBeEnabled();
+  await optionbutton.click();
+
+  // === 9. Click save change ===
+  const saveChangeBtn = saveChangesButton(page); 
+  await expect (saveChangeBtn).toBeVisible();
+  await expect(saveChangeBtn).toBeEnabled();
+  
+  //URL endpoint API
+const responePromise = page.waitForResponse(res =>
+  res.url().includes('execute-api.eu-central-1.amazonaws.com/v1/updateHotkeyPreset')&&
+  res.request().method() === 'POST'
+);
+
+  await saveChangeBtn.click();
+const responechangepreset = await responePromise;
+
+expect (responechangepreset.status()).toBe(200);
+
+const body =await responechangepreset.json();
+expect(body).toBeTruthy();
+
+
 
 });
 

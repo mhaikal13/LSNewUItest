@@ -256,7 +256,6 @@ export const HotkeySlot = (index) => {
 };
 
 
-
 // HOTKEY ITEM BY TITLE
 export const hotkeyItemByTitle = (title) => {
   return `text=${title}`;
@@ -290,8 +289,8 @@ export const emptyOptionButton = () => {
 };
 
 // SAVE CHANGES BUTTON
-export const saveChangesButton = () => {
-  return `div:has-text("Save changes")`;
+export const saveChangesButton = (page) => {
+  return page.locator('div').filter({ hasText: /^Save changes$/ });
 };
 
 // RESET DEFAULT BUTTON
@@ -308,6 +307,11 @@ export const loadAnotherButton = () => {
 export const closePresetButton = () => {
   return `text=Close Preset`;
 };
+
+//OPTION PRESET BUTTON
+export const OptionButton = (page) => {
+  return page.getByRole('button').filter({ hasText: /^$/ }).first();
+}
 
 // ============================================================================
 // Main Containers & Root
@@ -548,6 +552,7 @@ saveChangesButton,
 resetDefaultButton,
 loadAnotherButton,
 closePresetButton,
+OptionButton,
 
   // Main
   mainRoot,
